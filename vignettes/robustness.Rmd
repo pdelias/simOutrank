@@ -1,0 +1,115 @@
+---
+title: "Robustness: constraints and trimming"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Robustness: constraints and trimming}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 6,
+                      fig.height = 4)
+library(simOutrank)
+```
+
+A decision maker rarely accepts a clustering as-is. `simOutrank` lets them
+inject domain knowledge through **pairwise constraints** and remove
+uninformative cases by **trimming**. This vignette follows Runs 2 and 3 of
+Delias et al. (2021) on the bundled `illustrative_log`.
+
+```{r base}
+traces <- as_traces(illustrative_log, "case_id", "activity", "timestamp")
+criteria <- list(
+  crit_activity_profile(weight = 0.2, indifference = 0.7, similarity = 0.8,
+                        veto = 0.4),
+  crit_edit_distance(weight = 0.2, similarity = 2, indifference = 3, veto = 6),
+  crit_nominal("status", weight = 0.3),
+  crit_nominal("satisfaction", weight = 0.3)
+)
+sim <- outrank_similarity(traces, criteria)
+run1 <- cluster_traces(sim, k = 4, seed = 42)$memberships
+```
+
+In Run 1, some Gold customers who follow the long path share a cluster with
+Blue customers:
+
+```{r run1-mix}
+split(names(run1), run1)
+```
+
+## Run 2: cannot-link the tiers
+
+The DM decides that "Gold" and "Blue" customers should never share a cluster.
+`cannot_link()` severs the credibility of every mixed-tier pair
+(`S <- S * (1 - M)`). Passing an attribute name applies the constraint to all
+pairs whose values differ.
+
+```{r run2}
+sim2 <- cannot_link(sim, "status")
+run2 <- cluster_traces(sim2, k = 4, seed = 42)$memberships
+split(names(run2), run2)
+```
+
+Now no cluster mixes tiers:
+
+```{r run2-check}
+status <- illustrative_log$status[match(names(run2), illustrative_log$case_id)]
+table(cluster = run2, status = status)
+```
+
+The complementary operation, `must_link()`, rewards pairs that should stay
+together (`S <- min(S + reward * M, 1)`), and likewise accepts either a matrix
+of case-id pairs or an attribute name.
+
+```{r mustlink}
+sim_ml <- must_link(sim, cbind("B14", "G11"), reward = 2)
+sim_ml$S["B14", "G11"]
+```
+
+## Run 3: trim outliers
+
+The two outliers dilute the clustering. `trim_outliers()` scores each case by
+its total similarity to the others and removes the least-connected ones. The
+genuine low-similarity case is flagged first:
+
+```{r trim}
+trimmed <- trim_outliers(sim, prop = 0.04)   # remove floor(0.04 * 25) = 1 case
+attr(trimmed, "trimmed")
+```
+
+`B14`, whose `A, B, E` flow matches neither tier, has the lowest connectivity
+and is removed. (The paper additionally trims `G11` by domain judgement; under
+this weighting `G11` shares its tier and satisfaction with many cases and is not
+flagged automatically -- a good illustration of why trimming is offered as a
+tool, not an oracle.) For small logs the exact integer program is also
+available:
+
+```{r trim-lp}
+identical(attr(trim_outliers(sim, prop = 0.04, method = "lp"), "trimmed"),
+          attr(trim_outliers(sim, prop = 0.04, method = "greedy"), "trimmed"))
+```
+
+Clustering the trimmed matrix gives cleaner groups:
+
+```{r trim-cluster}
+run3 <- cluster_traces(trimmed, k = 4, seed = 42)$memberships
+split(names(run3), run3)
+```
+
+## Putting it together
+
+Constraints and trimming compose: trim first, then constrain (or the reverse),
+and cluster the adjusted matrix.
+
+```{r compose}
+final <- cluster_traces(cannot_link(trimmed, "status"), k = 4, seed = 42)
+if (requireNamespace("clValid", quietly = TRUE)) validate_clusters(final)
+```
+
+## Reference
+
+Delias, P., Doumpos, M., Manthou, V. and Grigoroudis, E. (2021). Improving the
+non-compensatory trace clustering. *International Transactions in Operational
+Research*.
+```

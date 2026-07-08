@@ -1,0 +1,127 @@
+---
+title: "Getting started with simOutrank"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Getting started with simOutrank}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>", fig.width = 6,
+                      fig.height = 4)
+```
+
+`simOutrank` clusters the traces of an event log by an *outranking* model of
+similarity. Instead of collapsing every perspective into a single distance, it
+scores each pair of traces on several problem-specific criteria -- activities,
+transitions, duration, case attributes -- and aggregates them with
+ELECTRE-III-style concordance and discordance. The result is a credibility
+matrix `S` that a spectral or hierarchical algorithm then partitions.
+
+This vignette walks through the whole pipeline on the bundled
+`illustrative_log`, a 25-case customer-service log from Delias et al. (2021).
+
+```{r setup}
+library(simOutrank)
+head(illustrative_log)
+```
+
+## 1. Traces
+
+`as_traces()` turns an event log into a `traces` object: the time-ordered,
+integer-encoded activity sequence of every case, plus the case-level attribute
+table.
+
+```{r traces}
+traces <- as_traces(illustrative_log,
+                    case_id = "case_id", activity = "activity",
+                    timestamp = "timestamp")
+traces
+summary(traces)[1:5, ]
+```
+
+## 2. Criteria
+
+Criteria are built with the `crit_*` helpers. Each carries a direction
+(similarity or dissimilarity), a weight, and ELECTRE-III thresholds
+(indifference, similarity, and an optional veto). Here we mirror the four
+criteria of the source paper: what activities occur, in what order, and two
+case attributes.
+
+```{r criteria}
+criteria <- list(
+  crit_activity_profile(weight = 0.2, indifference = 0.7, similarity = 0.8,
+                        veto = 0.4),
+  crit_edit_distance(weight = 0.2, similarity = 2, indifference = 3, veto = 6),
+  crit_nominal("status", weight = 0.3),
+  crit_nominal("satisfaction", weight = 0.3)
+)
+criteria[[1]]
+```
+
+Thresholds may be fixed numbers or quantiles of the criterion's own value
+distribution via `q()`; the [parameter-tuning
+vignette](parameter-tuning.html) explores that choice.
+
+## 3. Similarity
+
+`outrank_similarity()` resolves any quantile thresholds, normalises the
+weights, and aggregates the per-criterion indices into `S`.
+
+```{r similarity}
+sim <- outrank_similarity(traces, criteria)
+sim
+round(sim$S[1:5, 1:5], 2)
+```
+
+## 4. How many clusters?
+
+`eigengap()` plots the smallest eigenvalues of the normalized Laplacian; a gap
+after the k-th value suggests k groups.
+
+```{r eigengap}
+eigengap(sim, k_max = 8)
+```
+
+## 5. Cluster
+
+The paper targets four natural groups (tier x satisfaction). Spectral
+clustering uses a seed for reproducible k-means.
+
+```{r cluster}
+clust <- cluster_traces(sim, k = 4, seed = 42)
+clust
+split(names(clust$memberships), clust$memberships)
+```
+
+## 6. Use the result
+
+Join memberships back onto the event log, inspect a cluster's attribute
+profile, and compute validity indices.
+
+```{r use}
+augmented <- augment_log(clust, illustrative_log)
+head(augmented)
+
+plot(clust, type = "profile", attribute = "status")
+
+if (requireNamespace("clValid", quietly = TRUE)) {
+  validate_clusters(clust)
+}
+```
+
+## Where next
+
+* [Reproducing the illustrative example](reproducing-paper2.html) -- the same
+  pipeline framed as a published-result reproduction.
+* [Robustness: constraints and trimming](robustness.html) -- inject domain
+  knowledge and remove outliers.
+* [Parameter tuning](parameter-tuning.html) -- weights, thresholds and k.
+
+## Reference
+
+Delias, P., Doumpos, M., Manthou, V. and Grigoroudis, E. (2021). Improving the
+non-compensatory trace clustering. *International Transactions in Operational
+Research*.
+```
