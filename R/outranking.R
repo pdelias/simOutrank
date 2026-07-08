@@ -151,12 +151,13 @@ outrank_similarity <- function(traces, criteria, keep_partials = FALSE) {
 
   structure(
     list(
-      S           = s,
-      C           = concordance_sum,
-      D           = discordance,
-      case_ids    = ids,
-      criteria    = resolved,
-      partials    = partials
+      S               = s,
+      C               = concordance_sum,
+      D               = discordance,
+      case_ids        = ids,
+      criteria        = resolved,
+      case_attributes = traces$case_attributes,
+      partials        = partials
     ),
     class = "outrank_sim"
   )
