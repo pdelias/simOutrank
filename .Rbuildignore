@@ -2,3 +2,7 @@
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^\.github$
+^design$
+^papers$
+^dev$
+^.*\.Rproj$
