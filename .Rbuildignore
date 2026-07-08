@@ -5,4 +5,5 @@
 ^design$
 ^papers$
 ^dev$
+^data-raw$
 ^.*\.Rproj$
