@@ -1,0 +1,20 @@
+Package: simOutrank
+Title: Outranking-Based Trace Clustering
+Version: 0.0.0.9000
+Authors@R:
+    person("Pavlos", "Delias", , "pavlos.delias@gmail.com", role = c("aut", "cre"))
+Description: Implements outranking-based trace clustering for process
+    mining. Pairwise similarity between traces is assessed on multiple,
+    problem-specific criteria using ELECTRE-III-style partial concordance
+    and discordance indices with indifference, similarity and veto
+    thresholds. The aggregated credibility matrix is then clustered using
+    normalized spectral clustering or hierarchical clustering. Also
+    includes outlier trimming, must-link/cannot-link adjustments,
+    validation indices and diagnostic plots.
+License: GPL-3
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 8.0.0
+Suggests: 
+    testthat (>= 3.0.0)
+Config/testthat/edition: 3
