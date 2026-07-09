@@ -6,3 +6,6 @@
 .quarto
 inst/doc
 docs
+
+# Copyrighted publisher PDFs — kept locally, not published
+papers/
