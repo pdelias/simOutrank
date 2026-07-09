@@ -1,0 +1,158 @@
+# simOutrank
+
+**Outranking-based trace clustering for process mining.**
+
+`simOutrank` clusters the traces of an event log by an *outranking*
+model of similarity. Instead of collapsing every perspective into one
+distance, it scores each pair of traces on several problem-specific
+criteria — activities, transitions, duration, case attributes — and
+aggregates them with ELECTRE-III-style concordance and discordance
+(indifference, similarity and veto thresholds). The resulting
+credibility matrix is partitioned by normalized spectral or hierarchical
+clustering, with optional outlier trimming and must-link / cannot-link
+constraints.
+
+## Installation
+
+``` r
+
+# install.packages("remotes")
+remotes::install_github("pdelias/simOutrank")
+```
+
+## A 20-line example
+
+``` r
+
+library(simOutrank)
+
+# 1. An event log -> a traces object (bundled illustrative log, 25 cases).
+traces <- as_traces(illustrative_log,
+                    case_id = "case_id", activity = "activity",
+                    timestamp = "timestamp")
+
+# 2. Criteria over several perspectives (weights normalised internally).
+criteria <- list(
+  crit_activity_profile(weight = 0.2, indifference = 0.7, similarity = 0.8,
+                        veto = 0.4),
+  crit_edit_distance(weight = 0.2, similarity = 2, indifference = 3, veto = 6),
+  crit_nominal("status", weight = 0.3),
+  crit_nominal("satisfaction", weight = 0.3)
+)
+
+# 3. Aggregate to a credibility matrix, choose k, and cluster.
+sim   <- outrank_similarity(traces, criteria)
+eigengap(sim, k_max = 8)                       # how many clusters?
+clust <- cluster_traces(sim, k = 4, seed = 42)
+split(names(clust$memberships), clust$memberships)
+```
+
+## Learn more
+
+- **Getting started** — the full pipeline, step by step.
+- **Reproducing the illustrative example** and **Robustness** —
+  reproduce the published results, then inject domain knowledge and trim
+  outliers.
+- **Parameter tuning** — thresholds, weights and `k`, with sensitivity
+  sweeps.
+
+See `browseVignettes("simOutrank")` or the [package
+website](https://pdelias.github.io/simOutrank/) for these, plus
+website-only articles that reproduce the emergency-room study and
+cluster a large log.
+
+## Reference
+
+Delias, P. et al. (2017, 2021). Non-compensatory trace clustering.
+*Knowledge-Based Systems*; *International Transactions in Operational
+Research*. Design and roadmap:
+[`design/DESIGN.md`](https://pdelias.github.io/simOutrank/design/DESIGN.md).
+
+# Package index
+
+## Traces
+
+Turn an event log into a traces object.
+
+- [`as_traces()`](https://pdelias.github.io/simOutrank/reference/as_traces.md)
+  : Represent an event log as traces
+
+- [`summary(`*`<traces>`*`)`](https://pdelias.github.io/simOutrank/reference/summary.traces.md)
+  :
+
+  Per-case summary of a `traces` object
+
+## Criteria
+
+Build the criteria that define pairwise similarity.
+
+- [`criterion()`](https://pdelias.github.io/simOutrank/reference/criterion.md)
+  : Define an outranking criterion
+- [`q()`](https://pdelias.github.io/simOutrank/reference/q.md) :
+  Quantile threshold specification
+- [`crit_nominal()`](https://pdelias.github.io/simOutrank/reference/crit_attribute.md)
+  [`crit_ordinal()`](https://pdelias.github.io/simOutrank/reference/crit_attribute.md)
+  [`crit_numeric()`](https://pdelias.github.io/simOutrank/reference/crit_attribute.md)
+  : Attribute-based criterion templates
+- [`crit_custom()`](https://pdelias.github.io/simOutrank/reference/crit_custom.md)
+  : Custom criterion
+- [`crit_activity_profile()`](https://pdelias.github.io/simOutrank/reference/crit_process.md)
+  [`crit_transitions()`](https://pdelias.github.io/simOutrank/reference/crit_process.md)
+  [`crit_edit_distance()`](https://pdelias.github.io/simOutrank/reference/crit_process.md)
+  [`crit_trace_length()`](https://pdelias.github.io/simOutrank/reference/crit_process.md)
+  [`crit_distinct_activities()`](https://pdelias.github.io/simOutrank/reference/crit_process.md)
+  [`crit_duration()`](https://pdelias.github.io/simOutrank/reference/crit_process.md)
+  : Process-aware criteria
+
+## Similarity and clustering
+
+- [`outrank_similarity()`](https://pdelias.github.io/simOutrank/reference/outrank_similarity.md)
+  : Outranking credibility matrix
+- [`cluster_traces()`](https://pdelias.github.io/simOutrank/reference/cluster_traces.md)
+  : Cluster traces from a credibility matrix
+- [`eigengap()`](https://pdelias.github.io/simOutrank/reference/eigengap.md)
+  : Eigenvalue gap diagnostic
+
+## Robustness
+
+Trim outliers and inject domain knowledge.
+
+- [`trim_outliers()`](https://pdelias.github.io/simOutrank/reference/trim_outliers.md)
+  : Trim outlier cases
+- [`must_link()`](https://pdelias.github.io/simOutrank/reference/constraints.md)
+  [`cannot_link()`](https://pdelias.github.io/simOutrank/reference/constraints.md)
+  : Must-link and cannot-link constraints
+
+## Validation and output
+
+- [`validate_clusters()`](https://pdelias.github.io/simOutrank/reference/validate_clusters.md)
+  : Internal cluster validity indices
+- [`augment_log()`](https://pdelias.github.io/simOutrank/reference/augment_log.md)
+  : Join cluster memberships onto an event log
+- [`plot(`*`<outrank_clust>`*`)`](https://pdelias.github.io/simOutrank/reference/plot.outrank_clust.md)
+  : Plot a trace clustering
+
+## Data
+
+- [`illustrative_log`](https://pdelias.github.io/simOutrank/reference/illustrative_log.md)
+  : Illustrative customer-service event log
+
+# Articles
+
+### Get started
+
+- [Getting started with
+  simOutrank](https://pdelias.github.io/simOutrank/articles/getting-started.md):
+- [Parameter tuning and
+  sensitivity](https://pdelias.github.io/simOutrank/articles/parameter-tuning.md):
+
+### Reproducing published results
+
+- [Reproducing the illustrative
+  example](https://pdelias.github.io/simOutrank/articles/reproducing-paper2.md):
+- [Robustness: constraints and
+  trimming](https://pdelias.github.io/simOutrank/articles/robustness.md):
+- [Reproducing the emergency-room study (foundations
+  paper)](https://pdelias.github.io/simOutrank/articles/reproducing-paper1.md):
+- [Clustering a large event
+  log](https://pdelias.github.io/simOutrank/articles/large-log.md):
