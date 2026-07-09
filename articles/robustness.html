@@ -62,7 +62,7 @@
       <h1>Robustness: constraints and trimming</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/v0.1.0/vignettes/robustness.Rmd" class="external-link"><code>vignettes/robustness.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/main/vignettes/robustness.Rmd" class="external-link"><code>vignettes/robustness.Rmd</code></a></small>
       <div class="d-none name"><code>robustness.Rmd</code></div>
     </div>
 
@@ -114,10 +114,10 @@ name applies the constraint to all pairs whose values differ.</p>
 <span><span class="co">#&gt; [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11" "B12" "B13"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`2`</span></span>
-<span><span class="co">#&gt; [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G11"</span></span>
+<span><span class="co">#&gt; [1] "G6"  "G7"  "G8"  "G9"  "G10"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`3`</span></span>
-<span><span class="co">#&gt; [1] "G6"  "G7"  "G8"  "G9"  "G10"</span></span>
+<span><span class="co">#&gt; [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G11"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`4`</span></span>
 <span><span class="co">#&gt; [1] "B1"  "B2"  "B3"  "B4"  "B5"  "B14"</span></span></code></pre></div>
@@ -128,8 +128,8 @@ name applies the constraint to all pairs whose values differ.</p>
 <span><span class="co">#&gt;        status</span></span>
 <span><span class="co">#&gt; cluster Blue Gold</span></span>
 <span><span class="co">#&gt;       1    8    0</span></span>
-<span><span class="co">#&gt;       2    0    6</span></span>
-<span><span class="co">#&gt;       3    0    5</span></span>
+<span><span class="co">#&gt;       2    0    5</span></span>
+<span><span class="co">#&gt;       3    0    6</span></span>
 <span><span class="co">#&gt;       4    6    0</span></span></code></pre></div>
 <p>The complementary operation, <code><a href="../reference/constraints.html">must_link()</a></code>, rewards pairs
 that should stay together (<code>S &lt;- min(S + reward * M, 1)</code>),
@@ -170,13 +170,13 @@ integer program is also available:</p>
 <span><span class="co">#&gt; [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G6"  "G7"  "G8"  "G11"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`2`</span></span>
-<span><span class="co">#&gt; [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11"</span></span>
+<span><span class="co">#&gt; [1] "B1" "B2" "B3" "B4" "B5"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`3`</span></span>
-<span><span class="co">#&gt; [1] "G9"  "G10" "B12" "B13"</span></span>
+<span><span class="co">#&gt; [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`4`</span></span>
-<span><span class="co">#&gt; [1] "B1" "B2" "B3" "B4" "B5"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "G9"  "G10" "B12" "B13"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="putting-it-together">Putting it together<a class="anchor" aria-label="anchor" href="#putting-it-together"></a>

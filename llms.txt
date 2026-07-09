@@ -73,7 +73,7 @@ cluster a large log.
   1387–1406. <doi:10.1111/itor.13062>
 
 Design and roadmap:
-[`design/DESIGN.md`](https://pdelias.github.io/simOutrank/design/DESIGN.md).
+[`design/DESIGN.md`](https://github.com/pdelias/simOutrank/blob/main/design/DESIGN.md).
 
 # Package index
 

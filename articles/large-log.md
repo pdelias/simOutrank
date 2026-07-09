@@ -58,8 +58,8 @@ t_sim <- system.time(sim <- outrank_similarity(traces, criteria))
 t_cl  <- system.time(clust <- cluster_traces(sim, k = 4, seed = 1))
 rbind(similarity = t_sim[["elapsed"]], clustering = t_cl[["elapsed"]])
 #>             [,1]
-#> similarity 0.106
-#> clustering 0.108
+#> similarity 0.074
+#> clustering 0.093
 ```
 
 The measures are fully vectorised (no per-pair
@@ -73,7 +73,7 @@ ceiling: `S` for `n` cases is `8 * n^2` bytes (about 2 MB at n = 500,
 table(clust$memberships)
 #> 
 #>   1   2   3   4 
-#> 193 145  91  71
+#>  91 145  71 193
 eigengap(sim, k_max = 8)
 ```
 
