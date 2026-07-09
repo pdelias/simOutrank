@@ -58,8 +58,8 @@ t_sim <- system.time(sim <- outrank_similarity(traces, criteria))
 t_cl  <- system.time(clust <- cluster_traces(sim, k = 4, seed = 1))
 rbind(similarity = t_sim[["elapsed"]], clustering = t_cl[["elapsed"]])
 #>             [,1]
-#> similarity 0.088
-#> clustering 0.104
+#> similarity 0.106
+#> clustering 0.108
 ```
 
 The measures are fully vectorised (no per-pair
