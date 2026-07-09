@@ -53,6 +53,25 @@ test_that("missing columns and bad inputs are rejected", {
   expect_error(as_traces(bad, "case", "act", "ts"), "POSIXct")
 })
 
+test_that("the bupaR eventlog method reads the mapping from the object", {
+  skip_if_not_installed("bupaR")
+  df <- data.frame(
+    cid = c("c1", "c1", "c2", "c2"),
+    act = c("a", "b", "a", "c"),
+    ts  = as.POSIXct("2020-01-01", tz = "UTC") + c(0, 60, 0, 90),
+    ai  = 1:4, status = "complete", res = "r",
+    stringsAsFactors = FALSE
+  )
+  el <- bupaR::eventlog(df, case_id = "cid", activity_id = "act",
+                        activity_instance_id = "ai", lifecycle_id = "status",
+                        timestamp = "ts", resource_id = "res")
+  tr <- as_traces(el)
+  expect_s3_class(tr, "traces")
+  expect_equal(tr$case_ids, c("c1", "c2"))
+  expect_equal(tr$activities, c("a", "b", "c"))
+  expect_equal(tr$sequences$c2, c(1L, 3L))
+})
+
 test_that("print and summary work", {
   tr <- toy_traces()
   expect_output(print(tr), "<traces>")

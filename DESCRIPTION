@@ -1,6 +1,6 @@
 Package: simOutrank
 Title: Outranking-Based Trace Clustering
-Version: 0.0.0.9000
+Version: 0.1.0
 Authors@R:
     person("Pavlos", "Delias", , "pavlos.delias@gmail.com", role = c("aut", "cre"))
 Description: Implements outranking-based trace clustering for process
@@ -13,6 +13,7 @@ Description: Implements outranking-based trace clustering for process
     validation indices and diagnostic plots.
 License: GPL-3
 Encoding: UTF-8
+Language: en-GB
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 8.0.0
 Imports:
