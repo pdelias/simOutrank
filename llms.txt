@@ -63,9 +63,16 @@ cluster a large log.
 
 ## Reference
 
-Delias, P. et al. (2017, 2021). Non-compensatory trace clustering.
-*Knowledge-Based Systems*; *International Transactions in Operational
-Research*. Design and roadmap:
+- Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2019). A
+  non-compensatory approach for trace clustering. *International
+  Transactions in Operational Research*, 26(5), 1828–1846.
+  <doi:10.1111/itor.12395>
+- Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2023).
+  Improving the non-compensatory trace-clustering decision process.
+  *International Transactions in Operational Research*, 30(3),
+  1387–1406. <doi:10.1111/itor.13062>
+
+Design and roadmap:
 [`design/DESIGN.md`](https://pdelias.github.io/simOutrank/design/DESIGN.md).
 
 # Package index

@@ -40,7 +40,7 @@ case ids.
 Let `k = floor(prop * n)`. The `"greedy"` method removes the `k` cases
 with the smallest total similarity to the others (row sums of `S` with
 the diagonal excluded). The `"lp"` method solves the integer linear
-program of Delias et al. (2021), \$\$\min\_{o, r} \sum\_{i,j} s\_{ij}
+program of Delias et al. (2023), \$\$\min\_{o, r} \sum\_{i,j} s\_{ij}
 r\_{ij} \quad \text{s.t.} \quad \sum_i o_i = k,\\ o_i \le r\_{ij},\\ o_i
 \le r\_{ji},\\ o, r \in \\0, 1\\,\$\$ which selects the `k` cases whose
 incident edges carry the least similarity. A small constant is added to
@@ -50,8 +50,10 @@ incident edges carry the least similarity. A small constant is added to
 
 ## References
 
-Delias, P. et al. (2021). Improving the non-compensatory trace
-clustering. *International Transactions in Operational Research*.
+Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2023).
+Improving the non-compensatory trace-clustering decision process.
+*International Transactions in Operational Research*, 30(3), 1387-1406.
+[doi:10.1111/itor.13062](https://doi.org/10.1111/itor.13062)
 
 ## Examples
 

@@ -1,6 +1,6 @@
 # Reproducing the emergency-room study (foundations paper)
 
-> **Data note.** The foundations paper (Delias et al., 2017, *A
+> **Data note.** The foundations paper (Delias et al., 2019, *A
 > non-compensatory approach for trace clustering*) uses a real
 > emergency-room (ER) log that is not redistributable. This article
 > reproduces the *modelling recipe* on a synthetic ER-like log with the
@@ -124,6 +124,7 @@ traces <- as_traces(raw,
 
 ## Reference
 
-Delias, P., Doumpos, M., Grigoroudis, E., Manthou, V. and Matsatsinis,
-N. (2017). Supporting healthcare management decisions via robust
-clustering of event logs. *Knowledge-Based Systems*. \`\`\`
+Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2019). A
+non-compensatory approach for trace clustering. *International
+Transactions in Operational Research*, 26(5), 1828–1846.
+<doi:10.1111/itor.12395> \`\`\`

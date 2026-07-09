@@ -1,8 +1,8 @@
 # Reproducing the illustrative example
 
 This vignette reproduces the illustrative example of Delias et
-al. (2021), “Improving the non-compensatory trace clustering”. The log
-ships with the package as `illustrative_log`.
+al. (2023), “Improving the non-compensatory trace-clustering decision
+process”. The log ships with the package as `illustrative_log`.
 
 ## The scenario
 
@@ -108,6 +108,7 @@ vignette](https://pdelias.github.io/simOutrank/articles/robustness.md).
 
 ## Reference
 
-Delias, P., Doumpos, M., Manthou, V. and Grigoroudis, E. (2021).
-Improving the non-compensatory trace clustering. *International
-Transactions in Operational Research*. \`\`\`
+Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2023).
+Improving the non-compensatory trace-clustering decision process.
+*International Transactions in Operational Research*, 30(3), 1387–1406.
+<doi:10.1111/itor.13062> \`\`\`

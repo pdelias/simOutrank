@@ -3,7 +3,7 @@
 A decision maker rarely accepts a clustering as-is. `simOutrank` lets
 them inject domain knowledge through **pairwise constraints** and remove
 uninformative cases by **trimming**. This vignette follows Runs 2 and 3
-of Delias et al. (2021) on the bundled `illustrative_log`.
+of Delias et al. (2023) on the bundled `illustrative_log`.
 
 ``` r
 
@@ -154,6 +154,7 @@ if (requireNamespace("clValid", quietly = TRUE)) validate_clusters(final)
 
 ## Reference
 
-Delias, P., Doumpos, M., Manthou, V. and Grigoroudis, E. (2021).
-Improving the non-compensatory trace clustering. *International
-Transactions in Operational Research*. \`\`\`
+Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2023).
+Improving the non-compensatory trace-clustering decision process.
+*International Transactions in Operational Research*, 30(3), 1387–1406.
+<doi:10.1111/itor.13062> \`\`\`
