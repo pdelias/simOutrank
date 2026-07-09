@@ -70,4 +70,5 @@ articles that reproduce the emergency-room study and cluster a large log.
   Transactions in Operational Research*, 30(3), 1387–1406.
   doi:10.1111/itor.13062
 
-Design and roadmap: [`design/DESIGN.md`](design/DESIGN.md).
+Design and roadmap:
+[`design/DESIGN.md`](https://github.com/pdelias/simOutrank/blob/main/design/DESIGN.md).
