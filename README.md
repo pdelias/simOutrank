@@ -1,6 +1,7 @@
 # simOutrank
 
 <!-- badges: start -->
+[![R-CMD-check](https://github.com/pdelias/simOutrank/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pdelias/simOutrank/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
 **Outranking-based trace clustering for process mining.**
@@ -18,10 +19,8 @@ must-link / cannot-link constraints.
 
 ```r
 # install.packages("remotes")
-remotes::install_github("OWNER/simOutrank")
+remotes::install_github("pdelias/simOutrank")
 ```
-
-(Replace `OWNER` once the GitHub remote is connected.)
 
 ## A 20-line example
 
@@ -56,8 +55,9 @@ split(names(clust$memberships), clust$memberships)
   published results, then inject domain knowledge and trim outliers.
 * **Parameter tuning** — thresholds, weights and `k`, with sensitivity sweeps.
 
-See `browseVignettes("simOutrank")` for these, plus website-only articles that
-reproduce the emergency-room study and cluster a large log.
+See `browseVignettes("simOutrank")` or the [package
+website](https://pdelias.github.io/simOutrank/) for these, plus website-only
+articles that reproduce the emergency-room study and cluster a large log.
 
 ## Reference
 

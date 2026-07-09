@@ -31,3 +31,5 @@ Depends:
     R (>= 3.5)
 LazyData: true
 VignetteBuilder: knitr
+URL: https://github.com/pdelias/simOutrank, https://pdelias.github.io/simOutrank/
+BugReports: https://github.com/pdelias/simOutrank/issues
