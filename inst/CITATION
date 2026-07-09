@@ -1,0 +1,32 @@
+citHeader("To cite simOutrank in publications, please cite the methodology papers:")
+
+authors <- c(
+  person("Pavlos", "Delias"),
+  person("Michael", "Doumpos"),
+  person("Evangelos", "Grigoroudis"),
+  person("Nikolaos", "Matsatsinis")
+)
+
+bibentry(
+  bibtype = "Article",
+  title   = "A non-compensatory approach for trace clustering",
+  author  = authors,
+  journal = "International Transactions in Operational Research",
+  year    = "2019",
+  volume  = "26",
+  number  = "5",
+  pages   = "1828--1846",
+  doi     = "10.1111/itor.12395"
+)
+
+bibentry(
+  bibtype = "Article",
+  title   = "Improving the non-compensatory trace-clustering decision process",
+  author  = authors,
+  journal = "International Transactions in Operational Research",
+  year    = "2023",
+  volume  = "30",
+  number  = "3",
+  pages   = "1387--1406",
+  doi     = "10.1111/itor.13062"
+)

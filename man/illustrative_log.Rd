@@ -15,15 +15,16 @@ A data frame with 117 rows (events) and 5 columns:
 }
 }
 \source{
-Delias, P., Doumpos, M., Manthou, V. and Grigoroudis, E. (2021).
-Improving the non-compensatory trace clustering. \emph{International
-Transactions in Operational Research}, Table 1.
+Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N. (2023).
+Improving the non-compensatory trace-clustering decision process.
+\emph{International Transactions in Operational Research}, 30(3), 1387-1406.
+\doi{10.1111/itor.13062} (Table 1).
 }
 \usage{
 illustrative_log
 }
 \description{
-The synthetic event log of Table 1 in Delias et al. (2021), used to
+The synthetic event log of Table 1 in Delias et al. (2023), used to
 illustrate outranking-based trace clustering. It describes 25 fictitious
 customers of a service desk with two tiers ("Gold" and "Blue"); two cases
 (\code{B14}, \code{G11}) are deliberate outliers whose flow does not match the process

@@ -27,7 +27,7 @@ off_diagonal_rowsums <- function(s) {
   rowSums(w)
 }
 
-## Integer linear program of Delias et al. (2021): choose k cases to remove so
+## Integer linear program of Delias et al. (2023): choose k cases to remove so
 ## that the total similarity on their incident edges is minimal.
 lp_outliers <- function(s, k) {
   n <- nrow(s)
@@ -73,7 +73,7 @@ lp_outliers <- function(s, k) {
 #' Let `k = floor(prop * n)`. The `"greedy"` method removes the `k` cases with
 #' the smallest total similarity to the others (row sums of `S` with the
 #' diagonal excluded). The `"lp"` method solves the integer linear program of
-#' Delias et al. (2021),
+#' Delias et al. (2023),
 #' \deqn{\min_{o, r} \sum_{i,j} s_{ij} r_{ij} \quad \text{s.t.} \quad
 #'   \sum_i o_i = k,\ o_i \le r_{ij},\ o_i \le r_{ji},\ o, r \in \{0, 1\},}
 #' which selects the `k` cases whose incident edges carry the least similarity.
@@ -87,8 +87,10 @@ lp_outliers <- function(s, k) {
 #' @param lp_max Size above which the `"lp"` method warns about its cost.
 #' @return A trimmed `outrank_sim`, with a `trimmed` attribute giving the
 #'   removed case ids.
-#' @references Delias, P. et al. (2021). Improving the non-compensatory trace
-#'   clustering. *International Transactions in Operational Research*.
+#' @references Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N.
+#'   (2023). Improving the non-compensatory trace-clustering decision process.
+#'   *International Transactions in Operational Research*, 30(3), 1387-1406.
+#'   \doi{10.1111/itor.13062}
 #' @examples
 #' m <- matrix(0.8, 5, 5); m[5, ] <- 0.05; m[, 5] <- 0.05; diag(m) <- 1
 #' dimnames(m) <- list(1:5, 1:5)

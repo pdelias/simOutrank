@@ -1,4 +1,4 @@
-# Regression test on the illustrative log of Delias et al. (2021).
+# Regression test on the illustrative log of Delias et al. (2023).
 #
 # The paper's per-case memberships (Table 3) are published as a shape figure
 # and are not machine-readable; our spectral step also uses the corrected

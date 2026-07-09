@@ -40,7 +40,7 @@ constraint_mask <- function(sim, spec, relation) {
 #'
 #' Inject domain knowledge into the credibility matrix by rewarding pairs that
 #' should share a cluster (`must_link()`) or severing pairs that should not
-#' (`cannot_link()`), following Delias et al. (2021).
+#' (`cannot_link()`), following Delias et al. (2023).
 #'
 #' @details
 #' With a symmetric 0/1 constraint mask `M` (zero diagonal),

@@ -1,4 +1,4 @@
-# The four criteria of Table 2 in Delias et al. (2021), applied to the bundled
+# The four criteria of Table 2 in Delias et al. (2023), applied to the bundled
 # illustrative_log. Nominal (Status, Satisfaction) criteria are built as
 # precomputed match matrices from the case attributes; a veto of -1 disables
 # discordance, as in the paper.

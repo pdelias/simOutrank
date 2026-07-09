@@ -24,7 +24,7 @@ The \code{outrank_sim} with an updated \code{S}.
 \description{
 Inject domain knowledge into the credibility matrix by rewarding pairs that
 should share a cluster (\code{must_link()}) or severing pairs that should not
-(\code{cannot_link()}), following Delias et al. (2021).
+(\code{cannot_link()}), following Delias et al. (2023).
 }
 \details{
 With a symmetric 0/1 constraint mask \code{M} (zero diagonal),

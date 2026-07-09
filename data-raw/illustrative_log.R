@@ -1,5 +1,6 @@
-# Builds `illustrative_log` from Table 1 of Delias et al. (2021), "Improving
-# the non-compensatory trace clustering", Intl. Trans. in Op. Res.
+# Builds `illustrative_log` from Table 1 of Delias et al. (2023), "Improving the
+# non-compensatory trace-clustering decision process", Intl. Trans. in Op. Res.,
+# 30(3), 1387-1406. doi:10.1111/itor.13062
 #
 # Run with: source("data-raw/illustrative_log.R")
 

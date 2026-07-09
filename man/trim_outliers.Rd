@@ -27,7 +27,7 @@ removed case ids.
 Let \code{k = floor(prop * n)}. The \code{"greedy"} method removes the \code{k} cases with
 the smallest total similarity to the others (row sums of \code{S} with the
 diagonal excluded). The \code{"lp"} method solves the integer linear program of
-Delias et al. (2021),
+Delias et al. (2023),
 \deqn{\min_{o, r} \sum_{i,j} s_{ij} r_{ij} \quad \text{s.t.} \quad
   \sum_i o_i = k,\ o_i \le r_{ij},\ o_i \le r_{ji},\ o, r \in \{0, 1\},}
 which selects the \code{k} cases whose incident edges carry the least similarity.
@@ -46,6 +46,8 @@ sim <- outrank_similarity(tr, crit)
 trim_outliers(sim, prop = 0.2)
 }
 \references{
-Delias, P. et al. (2021). Improving the non-compensatory trace
-clustering. \emph{International Transactions in Operational Research}.
+Delias, P., Doumpos, M., Grigoroudis, E. and Matsatsinis, N.
+(2023). Improving the non-compensatory trace-clustering decision process.
+\emph{International Transactions in Operational Research}, 30(3), 1387-1406.
+\doi{10.1111/itor.13062}
 }
