@@ -1,0 +1,47 @@
+template:
+  bootstrap: 5
+
+reference:
+  - title: Traces
+    desc: Turn an event log into a traces object.
+    contents:
+      - as_traces
+      - summary.traces
+  - title: Criteria
+    desc: Build the criteria that define pairwise similarity.
+    contents:
+      - criterion
+      - q
+      - starts_with("crit_")
+  - title: Similarity and clustering
+    contents:
+      - outrank_similarity
+      - cluster_traces
+      - eigengap
+  - title: Robustness
+    desc: Trim outliers and inject domain knowledge.
+    contents:
+      - trim_outliers
+      - must_link
+      - cannot_link
+  - title: Validation and output
+    contents:
+      - validate_clusters
+      - augment_log
+      - plot.outrank_clust
+  - title: Data
+    contents:
+      - illustrative_log
+
+articles:
+  - title: Get started
+    navbar: ~
+    contents:
+      - getting-started
+      - parameter-tuning
+  - title: Reproducing published results
+    contents:
+      - reproducing-paper2
+      - robustness
+      - articles/reproducing-paper1
+      - articles/large-log
