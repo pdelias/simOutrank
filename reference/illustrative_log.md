@@ -2,9 +2,10 @@
 
 The synthetic event log of Table 1 in Delias et al. (2023), used to
 illustrate outranking-based trace clustering. It describes 25 fictitious
-customers of a service desk with two tiers ("Gold" and "Blue"); two
-cases (`B14`, `G11`) are deliberate outliers whose flow does not match
-the process logic.
+customers of a service desk with two tiers, `"GOLD"` and `"NORMAL"` (the
+latter is the "Blue" tier of the paper's narrative). Cases are numbered
+in Table 1's order; the last two (case ids `"24"` and `"25"`) are
+deliberate outliers whose flow matches neither tier.
 
 ## Usage
 
@@ -18,7 +19,7 @@ A data frame with 117 rows (events) and 5 columns:
 
 - case_id:
 
-  Customer identifier (25 distinct cases).
+  Customer identifier, `"1"`–`"25"` (character).
 
 - activity:
 
@@ -30,11 +31,11 @@ A data frame with 117 rows (events) and 5 columns:
 
 - status:
 
-  Customer tier, `"Gold"` or `"Blue"`.
+  Customer tier, `"GOLD"` or `"NORMAL"`.
 
 - satisfaction:
 
-  Registered satisfaction, `"HIGH"` or `"LOW"`.
+  Registered satisfaction, `"High"` or `"Low"`.
 
 ## Source
 

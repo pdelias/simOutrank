@@ -19,64 +19,49 @@ sim <- outrank_similarity(traces, criteria)
 run1 <- cluster_traces(sim, k = 4, seed = 42)$memberships
 ```
 
-In Run 1, some Gold customers who follow the long path share a cluster
-with Blue customers:
+Each Run-1 cluster already contains a single tier: with these criteria
+and the corrected normalisation, `simOutrank` separates `GOLD` from
+`NORMAL` without any constraint. (The paper’s original Run 1, under a
+different normalisation, mixed some long-path GOLD customers with NORMAL
+ones.)
 
 ``` r
 
-split(names(run1), run1)
-#> $`1`
-#> [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11" "B12" "B13"
-#> 
-#> $`2`
-#> [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G11"
-#> 
-#> $`3`
-#> [1] "G6"  "G7"  "G8"  "G9"  "G10"
-#> 
-#> $`4`
-#> [1] "B1"  "B2"  "B3"  "B4"  "B5"  "B14"
+tier <- illustrative_log$status[match(names(run1), illustrative_log$case_id)]
+table(cluster = run1, tier = tier)
+#>        tier
+#> cluster GOLD NORMAL
+#>       1    0      8
+#>       2    6      0
+#>       3    5      0
+#>       4    0      6
 ```
 
 ## Run 2: cannot-link the tiers
 
-The DM decides that “Gold” and “Blue” customers should never share a
-cluster.
+Even when the base clustering separates the tiers, a decision maker may
+want to *guarantee* it.
 [`cannot_link()`](https://pdelias.github.io/simOutrank/reference/constraints.md)
-severs the credibility of every mixed-tier pair (`S <- S * (1 - M)`).
-Passing an attribute name applies the constraint to all pairs whose
+severs the credibility of every mixed-tier pair (`S <- S * (1 - M)`);
+passing an attribute name applies the constraint to all pairs whose
 values differ.
 
 ``` r
 
+sim$S["1", "11"]                     # a GOLD-NORMAL pair, before
+#> [1] 0
 sim2 <- cannot_link(sim, "status")
+sim2$S["1", "11"]                    # severed to 0
+#> [1] 0
 run2 <- cluster_traces(sim2, k = 4, seed = 42)$memberships
-split(names(run2), run2)
-#> $`1`
-#> [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11" "B12" "B13"
-#> 
-#> $`2`
-#> [1] "G6"  "G7"  "G8"  "G9"  "G10"
-#> 
-#> $`3`
-#> [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G11"
-#> 
-#> $`4`
-#> [1] "B1"  "B2"  "B3"  "B4"  "B5"  "B14"
-```
-
-Now no cluster mixes tiers:
-
-``` r
-
-status <- illustrative_log$status[match(names(run2), illustrative_log$case_id)]
-table(cluster = run2, status = status)
-#>        status
-#> cluster Blue Gold
-#>       1    8    0
-#>       2    0    5
-#>       3    0    6
-#>       4    6    0
+table(cluster = run2,
+      tier = illustrative_log$status[match(names(run2), illustrative_log$case_id)])
+#>        tier
+#> cluster GOLD NORMAL
+#>       1    0      8
+#>       2    6      0
+#>       3    5      0
+#>       4    0      6
 ```
 
 The complementary operation,
@@ -87,8 +72,8 @@ name.
 
 ``` r
 
-sim_ml <- must_link(sim, cbind("B14", "G11"), reward = 2)
-sim_ml$S["B14", "G11"]
+sim_ml <- must_link(sim, cbind("24", "25"), reward = 2)   # the two outliers
+sim_ml$S["24", "25"]
 #> [1] 1
 ```
 
@@ -103,12 +88,12 @@ least-connected ones. The genuine low-similarity case is flagged first:
 
 trimmed <- trim_outliers(sim, prop = 0.04)   # remove floor(0.04 * 25) = 1 case
 attr(trimmed, "trimmed")
-#> [1] "B14"
+#> [1] "24"
 ```
 
-`B14`, whose `A, B, E` flow matches neither tier, has the lowest
-connectivity and is removed. (The paper additionally trims `G11` by
-domain judgement; under this weighting `G11` shares its tier and
+Case `24`, whose `A, B, E` flow matches neither tier, has the lowest
+connectivity and is removed. (The paper additionally trims case `25` by
+domain judgement; under this weighting `25` shares its tier and
 satisfaction with many cases and is not flagged automatically – a good
 illustration of why trimming is offered as a tool, not an oracle.) For
 small logs the exact integer program is also available:
@@ -127,16 +112,16 @@ Clustering the trimmed matrix gives cleaner groups:
 run3 <- cluster_traces(trimmed, k = 4, seed = 42)$memberships
 split(names(run3), run3)
 #> $`1`
-#> [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G6"  "G7"  "G8"  "G11"
+#> [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "25"
 #> 
 #> $`2`
-#> [1] "B1" "B2" "B3" "B4" "B5"
+#> [1] "16" "17" "18" "19" "20" "21"
 #> 
 #> $`3`
-#> [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11"
+#> [1] "9"  "10" "22" "23"
 #> 
 #> $`4`
-#> [1] "G9"  "G10" "B12" "B13"
+#> [1] "11" "12" "13" "14" "15"
 ```
 
 ## Putting it together

@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">simOutrank</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -87,12 +87,12 @@ Delias et al. (2023).</p>
 <span><span class="co">#&gt;     q</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">illustrative_log</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   case_id activity           timestamp status satisfaction</span></span>
-<span><span class="co">#&gt; 1      G1        B 2021-01-01 00:00:00   Gold         HIGH</span></span>
-<span><span class="co">#&gt; 2      G1        E 2021-01-01 00:01:00   Gold         HIGH</span></span>
-<span><span class="co">#&gt; 3      G2        B 2021-01-01 00:00:00   Gold         HIGH</span></span>
-<span><span class="co">#&gt; 4      G2        E 2021-01-01 00:01:00   Gold         HIGH</span></span>
-<span><span class="co">#&gt; 5      G3        B 2021-01-01 00:00:00   Gold         HIGH</span></span>
-<span><span class="co">#&gt; 6      G3        E 2021-01-01 00:01:00   Gold         HIGH</span></span></code></pre></div>
+<span><span class="co">#&gt; 1       1        B 2021-01-01 00:01:00   GOLD         High</span></span>
+<span><span class="co">#&gt; 2       1        E 2021-01-01 00:02:00   GOLD         High</span></span>
+<span><span class="co">#&gt; 3       2        B 2021-01-01 00:01:00   GOLD         High</span></span>
+<span><span class="co">#&gt; 4       2        E 2021-01-01 00:02:00   GOLD         High</span></span>
+<span><span class="co">#&gt; 5       3        B 2021-01-01 00:01:00   GOLD         High</span></span>
+<span><span class="co">#&gt; 6       3        E 2021-01-01 00:02:00   GOLD         High</span></span></code></pre></div>
 <div class="section level2">
 <h2 id="traces">1. Traces<a class="anchor" aria-label="anchor" href="#traces"></a>
 </h2>
@@ -109,11 +109,11 @@ sequence of every case, plus the case-level attribute table.</p>
 <span><span class="co">#&gt;   case attributes: status, satisfaction</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/summary.html" class="external-link">summary</a></span><span class="op">(</span><span class="va">traces</span><span class="op">)</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="op">]</span></span>
 <span><span class="co">#&gt;   case_id n_events n_distinct</span></span>
-<span><span class="co">#&gt; 1      G1        2          2</span></span>
-<span><span class="co">#&gt; 2      G2        2          2</span></span>
-<span><span class="co">#&gt; 3      G3        2          2</span></span>
-<span><span class="co">#&gt; 4      G4        2          2</span></span>
-<span><span class="co">#&gt; 5      G5        2          2</span></span></code></pre></div>
+<span><span class="co">#&gt; 1       1        2          2</span></span>
+<span><span class="co">#&gt; 2       2        2          2</span></span>
+<span><span class="co">#&gt; 3       3        2          2</span></span>
+<span><span class="co">#&gt; 4       4        2          2</span></span>
+<span><span class="co">#&gt; 5       5        2          2</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="criteria">2. Criteria<a class="anchor" aria-label="anchor" href="#criteria"></a>
@@ -150,12 +150,12 @@ normalises the weights, and aggregates the per-criterion indices into
 <span><span class="co">#&gt; &lt;outrank_sim&gt;: 25 cases, 4 criteria</span></span>
 <span><span class="co">#&gt;   S in [0.000, 1.000], symmetric = TRUE</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/Round.html" class="external-link">round</a></span><span class="op">(</span><span class="va">sim</span><span class="op">$</span><span class="va">S</span><span class="op">[</span><span class="fl">1</span><span class="op">:</span><span class="fl">5</span>, <span class="fl">1</span><span class="op">:</span><span class="fl">5</span><span class="op">]</span>, <span class="fl">2</span><span class="op">)</span></span>
-<span><span class="co">#&gt;    G1 G2 G3 G4 G5</span></span>
-<span><span class="co">#&gt; G1  1  1  1  1  1</span></span>
-<span><span class="co">#&gt; G2  1  1  1  1  1</span></span>
-<span><span class="co">#&gt; G3  1  1  1  1  1</span></span>
-<span><span class="co">#&gt; G4  1  1  1  1  1</span></span>
-<span><span class="co">#&gt; G5  1  1  1  1  1</span></span></code></pre></div>
+<span><span class="co">#&gt;   1 2 3 4 5</span></span>
+<span><span class="co">#&gt; 1 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; 2 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; 3 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; 4 1 1 1 1 1</span></span>
+<span><span class="co">#&gt; 5 1 1 1 1 1</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="how-many-clusters">4. How many clusters?<a class="anchor" aria-label="anchor" href="#how-many-clusters"></a>
@@ -178,16 +178,16 @@ clustering uses a seed for reproducible k-means.</p>
 <span><span class="co">#&gt;   cluster sizes: 1=8, 2=6, 3=5, 4=6</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/split.html" class="external-link">split</a></span><span class="op">(</span><span class="fu"><a href="https://rdrr.io/r/base/names.html" class="external-link">names</a></span><span class="op">(</span><span class="va">clust</span><span class="op">$</span><span class="va">memberships</span><span class="op">)</span>, <span class="va">clust</span><span class="op">$</span><span class="va">memberships</span><span class="op">)</span></span>
 <span><span class="co">#&gt; $`1`</span></span>
-<span><span class="co">#&gt; [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11" "B12" "B13"</span></span>
+<span><span class="co">#&gt; [1] "16" "17" "18" "19" "20" "21" "22" "23"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`2`</span></span>
-<span><span class="co">#&gt; [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G11"</span></span>
+<span><span class="co">#&gt; [1] "1"  "2"  "3"  "4"  "5"  "25"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`3`</span></span>
-<span><span class="co">#&gt; [1] "G6"  "G7"  "G8"  "G9"  "G10"</span></span>
+<span><span class="co">#&gt; [1] "6"  "7"  "8"  "9"  "10"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`4`</span></span>
-<span><span class="co">#&gt; [1] "B1"  "B2"  "B3"  "B4"  "B5"  "B14"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "11" "12" "13" "14" "15" "24"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="use-the-result">6. Use the result<a class="anchor" aria-label="anchor" href="#use-the-result"></a>
@@ -199,12 +199,12 @@ attribute profile, and compute validity indices.</p>
 <span><span class="co">#&gt; Joining on case-id column 'case_id'.</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">augmented</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   case_id activity           timestamp status satisfaction .cluster</span></span>
-<span><span class="co">#&gt; 1      G1        B 2021-01-01 00:00:00   Gold         HIGH        2</span></span>
-<span><span class="co">#&gt; 2      G1        E 2021-01-01 00:01:00   Gold         HIGH        2</span></span>
-<span><span class="co">#&gt; 3      G2        B 2021-01-01 00:00:00   Gold         HIGH        2</span></span>
-<span><span class="co">#&gt; 4      G2        E 2021-01-01 00:01:00   Gold         HIGH        2</span></span>
-<span><span class="co">#&gt; 5      G3        B 2021-01-01 00:00:00   Gold         HIGH        2</span></span>
-<span><span class="co">#&gt; 6      G3        E 2021-01-01 00:01:00   Gold         HIGH        2</span></span>
+<span><span class="co">#&gt; 1       1        B 2021-01-01 00:01:00   GOLD         High        2</span></span>
+<span><span class="co">#&gt; 2       1        E 2021-01-01 00:02:00   GOLD         High        2</span></span>
+<span><span class="co">#&gt; 3       2        B 2021-01-01 00:01:00   GOLD         High        2</span></span>
+<span><span class="co">#&gt; 4       2        E 2021-01-01 00:02:00   GOLD         High        2</span></span>
+<span><span class="co">#&gt; 5       3        B 2021-01-01 00:01:00   GOLD         High        2</span></span>
+<span><span class="co">#&gt; 6       3        E 2021-01-01 00:02:00   GOLD         High        2</span></span>
 <span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/graphics/plot.default.html" class="external-link">plot</a></span><span class="op">(</span><span class="va">clust</span>, type <span class="op">=</span> <span class="st">"profile"</span>, attribute <span class="op">=</span> <span class="st">"status"</span><span class="op">)</span></span></code></pre></div>
 <p><img src="getting-started_files/figure-html/use-1.png" class="r-plt" alt="" width="576"></p>

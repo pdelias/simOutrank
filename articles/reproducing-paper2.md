@@ -6,20 +6,22 @@ process”. The log ships with the package as `illustrative_log`.
 
 ## The scenario
 
-A service desk handles two customer tiers, “Gold” and “Blue”, each with
-its own process flow, and records each customer’s satisfaction. There
-are 25 fictitious customers (Table 1 of the paper); two of them, `B14`
-and `G11`, are deliberate outliers whose flow does not fit either tier.
+A service desk handles two customer tiers, `"GOLD"` and `"NORMAL"` (the
+paper calls the latter “Blue”), each with its own process flow, and
+records each customer’s satisfaction. There are 25 fictitious customers
+(Table 1 of the paper), numbered in Table 1’s order; the last two (cases
+`24` and `25`) are deliberate outliers whose flow does not fit either
+tier.
 
 ``` r
 
 traces <- as_traces(illustrative_log, "case_id", "activity", "timestamp")
 table(illustrative_log$status[!duplicated(illustrative_log$case_id)],
       illustrative_log$satisfaction[!duplicated(illustrative_log$case_id)])
-#>       
-#>        HIGH LOW
-#>   Blue   12   2
-#>   Gold    9   2
+#>         
+#>          High Low
+#>   GOLD      9   2
+#>   NORMAL   12   2
 ```
 
 ## The criteria (Table 2)
@@ -55,11 +57,11 @@ under every criterion, so their credibility is exactly 1:
 
 ``` r
 
-sim$S[c("G1", "G2", "G3"), c("G1", "G2", "G3")]
-#>    G1 G2 G3
-#> G1  1  1  1
-#> G2  1  1  1
-#> G3  1  1  1
+sim$S[c("1", "2", "3"), c("1", "2", "3")]
+#>   1 2 3
+#> 1 1 1 1
+#> 2 1 1 1
+#> 3 1 1 1
 ```
 
 ## Run 1: clustering without domain knowledge
@@ -72,16 +74,16 @@ baseline “Run 1”, with no constraints or trimming.
 clust <- cluster_traces(sim, k = 4, seed = 42)
 split(names(clust$memberships), clust$memberships)
 #> $`1`
-#> [1] "B6"  "B7"  "B8"  "B9"  "B10" "B11" "B12" "B13"
+#> [1] "16" "17" "18" "19" "20" "21" "22" "23"
 #> 
 #> $`2`
-#> [1] "G1"  "G2"  "G3"  "G4"  "G5"  "G11"
+#> [1] "1"  "2"  "3"  "4"  "5"  "25"
 #> 
 #> $`3`
-#> [1] "G6"  "G7"  "G8"  "G9"  "G10"
+#> [1] "6"  "7"  "8"  "9"  "10"
 #> 
 #> $`4`
-#> [1] "B1"  "B2"  "B3"  "B4"  "B5"  "B14"
+#> [1] "11" "12" "13" "14" "15" "24"
 ```
 
 The clusters recover the main structure of the process: cases with an

@@ -72,7 +72,7 @@ sens <- t(vapply(grid, function(s) {
     rand   = rand_index(memb, baseline))
 }, numeric(2)))
 data.frame(similarity = grid, sens)
-#>   similarity    mean_S   rand.G1
+#>   similarity    mean_S    rand.1
 #> 1       0.75 0.4959126 0.9633333
 #> 2       0.80 0.4885674 1.0000000
 #> 3       0.85 0.4765922 1.0000000

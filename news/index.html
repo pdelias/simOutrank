@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">simOutrank</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.1.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,6 +39,22 @@
       <small>Source: <a href="https://github.com/pdelias/simOutrank/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.2.0" id="simoutrank-020">simOutrank 0.2.0<a class="anchor" aria-label="anchor" href="#simoutrank-020"></a></h2>
+<div class="section level3">
+<h3 id="data-0-2-0">Data<a class="anchor" aria-label="anchor" href="#data-0-2-0"></a></h3>
+<ul><li>
+<code>illustrative_log</code> now ships the authoritative CSV from Delias et al. (2023) rather than a reconstruction of Table 1. <strong>Breaking:</strong> case ids are now <code>"1"</code>–<code>"25"</code> (previously <code>G1</code>/<code>B1</code>…), the lower tier is <code>"NORMAL"</code> (previously <code>"Blue"</code>), and <code>satisfaction</code> is <code>"High"</code>/<code>"Low"</code> (previously upper case). The credibility matrix <code>S</code> is unchanged in value.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="vignettes-0-2-0">Vignettes<a class="anchor" aria-label="anchor" href="#vignettes-0-2-0"></a></h3>
+<ul><li>The reproduction vignettes use the real illustrative log. The large-log article now reproduces the BPIC’11 case study of Delias et al. (2023), including Figures 2 and 3 from bundled aggregate tables.</li>
+</ul></div>
+<div class="section level3">
+<h3 id="internal-0-2-0">Internal<a class="anchor" aria-label="anchor" href="#internal-0-2-0"></a></h3>
+<ul><li>Added gated (<code>skip_on_cran</code>) regression tests on the BPIC’11 similarity matrix. That matrix and the preprocessed BPIC’11 log are kept local-only under the 4TU General Terms of Use and are not redistributed with the package.</li>
+</ul></div>
+</div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.1.0" id="simoutrank-010">simOutrank 0.1.0<a class="anchor" aria-label="anchor" href="#simoutrank-010"></a></h2>
 <p>First public release. <code>simOutrank</code> implements outranking-based trace clustering for process mining.</p>
