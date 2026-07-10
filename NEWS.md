@@ -1,3 +1,11 @@
+# simOutrank 0.3.0
+
+* **Breaking:** the quantile-threshold constructor `q()` is renamed to
+  `as_quantile()` to avoid masking `base::q()` and for consistency with
+  `as_traces()`. Replace `q(0.8)` with `as_quantile(0.8)`.
+* Added the maintainer's ORCID.
+
+
 # simOutrank 0.2.0
 
 ## Data
@@ -36,7 +44,7 @@ for process mining.
   `crit_trace_length()`, `crit_distinct_activities()`, `crit_duration()`),
   attribute templates (`crit_nominal()`, `crit_ordinal()`, `crit_numeric()`)
   and the `crit_custom()` escape hatch, all built on `criterion()` with
-  fixed-number or quantile (`q()`) thresholds.
+  fixed-number or quantile (`as_quantile()`) thresholds.
 * `outrank_similarity()` aggregates the criteria into the ELECTRE-III
   credibility matrix `S`.
 * `cluster_traces()` partitions `S` by normalized spectral clustering

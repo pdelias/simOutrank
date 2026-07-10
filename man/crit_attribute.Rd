@@ -13,8 +13,8 @@ crit_ordinal(
   attribute,
   levels,
   weight = 1,
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = attribute
 )
@@ -23,8 +23,8 @@ crit_numeric(
   attribute,
   weight = 1,
   transform = identity,
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = attribute
 )
@@ -39,7 +39,7 @@ crit_numeric(
 \item{levels}{For \code{crit_ordinal()}, the attribute values from lowest to
 highest rank.}
 
-\item{indifference, similarity, veto}{Thresholds; a number or a \code{\link[=q]{q()}}
+\item{indifference, similarity, veto}{Thresholds; a number or a \code{\link[=as_quantile]{as_quantile()}}
 specification. Defaults suit the direction and are overridable.}
 
 \item{transform}{For \code{crit_numeric()}, a function applied to the numeric

@@ -36,7 +36,7 @@ aggregation is
 A criterion with \code{c_j = 1} is never in \code{J} (concordance is already maximal),
 which also avoids the division by \code{1 - c_j}.
 
-Quantile thresholds (\code{\link[=q]{q()}}) are resolved against the off-diagonal
+Quantile thresholds (\code{\link[=as_quantile]{as_quantile()}}) are resolved against the off-diagonal
 distribution of each criterion's own measure matrix before the indices are
 computed. Weights are normalised to sum to one, with a message when they did
 not already.

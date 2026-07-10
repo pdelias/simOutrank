@@ -12,16 +12,16 @@
 \usage{
 crit_activity_profile(
   weight = 1,
-  indifference = q(0.5),
-  similarity = q(0.8),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.8),
   veto = NULL,
   name = "activity_profile"
 )
 
 crit_transitions(
   weight = 1,
-  indifference = q(0.5),
-  similarity = q(0.8),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.8),
   veto = NULL,
   name = "transitions"
 )
@@ -29,24 +29,24 @@ crit_transitions(
 crit_edit_distance(
   weight = 1,
   method = "osa",
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = "edit_distance"
 )
 
 crit_trace_length(
   weight = 1,
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = "trace_length"
 )
 
 crit_distinct_activities(
   weight = 1,
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = "distinct_activities"
 )
@@ -54,8 +54,8 @@ crit_distinct_activities(
 crit_duration(
   weight = 1,
   units = "mins",
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = "duration"
 )
@@ -64,7 +64,7 @@ crit_duration(
 \item{weight}{A single positive weight (normalised later, when the
 similarity matrix is built).}
 
-\item{indifference, similarity, veto}{Thresholds, each a number or a \code{\link[=q]{q()}}
+\item{indifference, similarity, veto}{Thresholds, each a number or a \code{\link[=as_quantile]{as_quantile()}}
 quantile specification. The defaults differ by direction and are
 documented in the argument defaults.}
 

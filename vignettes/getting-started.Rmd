@@ -61,7 +61,7 @@ criteria[[1]]
 ```
 
 Thresholds may be fixed numbers or quantiles of the criterion's own value
-distribution via `q()`; the [parameter-tuning
+distribution via `as_quantile()`; the [parameter-tuning
 vignette](parameter-tuning.html) explores that choice.
 
 ## 3. Similarity

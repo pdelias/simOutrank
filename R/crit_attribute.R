@@ -60,7 +60,7 @@ numeric_matrix <- function(traces, attribute, transform) {
 #' @param transform For `crit_numeric()`, a function applied to the numeric
 #'   attribute before differencing (e.g. `log`); defaults to [identity()].
 #' @param weight A single positive weight.
-#' @param indifference,similarity,veto Thresholds; a number or a [q()]
+#' @param indifference,similarity,veto Thresholds; a number or a [as_quantile()]
 #'   specification. Defaults suit the direction and are overridable.
 #' @param name Criterion label; defaults to the attribute name.
 #' @return A [criterion()] object.
@@ -83,7 +83,7 @@ crit_nominal <- function(attribute, weight = 1, name = attribute) {
 #' @rdname crit_attribute
 #' @export
 crit_ordinal <- function(attribute, levels, weight = 1,
-                         indifference = q(0.5), similarity = q(0.2),
+                         indifference = as_quantile(0.5), similarity = as_quantile(0.2),
                          veto = NULL, name = attribute) {
   criterion(function(traces) ordinal_matrix(traces, attribute, levels),
             "dissimilarity", weight, indifference, similarity, veto, name)
@@ -92,7 +92,7 @@ crit_ordinal <- function(attribute, levels, weight = 1,
 #' @rdname crit_attribute
 #' @export
 crit_numeric <- function(attribute, weight = 1, transform = identity,
-                         indifference = q(0.5), similarity = q(0.2),
+                         indifference = as_quantile(0.5), similarity = as_quantile(0.2),
                          veto = NULL, name = attribute) {
   criterion(function(traces) numeric_matrix(traces, attribute, transform),
             "dissimilarity", weight, indifference, similarity, veto, name)
@@ -108,7 +108,7 @@ crit_numeric <- function(attribute, weight = 1, transform = identity,
 #'   precomputed numeric matrix with case-id dimnames.
 #' @param direction `"similarity"` or `"dissimilarity"`.
 #' @param weight A single positive weight.
-#' @param indifference,similarity Required thresholds (number or [q()]).
+#' @param indifference,similarity Required thresholds (number or [as_quantile()]).
 #' @param veto Optional veto threshold.
 #' @param name Criterion label.
 #' @return A [criterion()] object.

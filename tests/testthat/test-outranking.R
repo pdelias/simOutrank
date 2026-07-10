@@ -102,7 +102,7 @@ test_that("S is symmetric, named and in [0, 1] on real measures", {
     criterion(function(t) measure_activity_profile(t), "similarity",
               weight = 2, indifference = 0.3, similarity = 0.8, veto = 0.1),
     criterion(function(t) measure_edit_distance(t), "dissimilarity",
-              weight = 1, indifference = q(0.25), similarity = 0, veto = q(0.75))
+              weight = 1, indifference = as_quantile(0.25), similarity = 0, veto = as_quantile(0.75))
   )
   sim <- suppressMessages(outrank_similarity(tr, criteria, keep_partials = TRUE))
 

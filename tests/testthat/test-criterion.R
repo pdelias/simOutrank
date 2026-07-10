@@ -1,9 +1,9 @@
-test_that("q() validates its probability", {
-  expect_s3_class(q(0.5), "outrank_quantile")
-  expect_equal(q(0.8)$p, 0.8)
-  expect_error(q(-0.1), "\\[0, 1\\]")
-  expect_error(q(2), "\\[0, 1\\]")
-  expect_error(q(c(0.2, 0.3)), "single")
+test_that("as_quantile() validates its probability", {
+  expect_s3_class(as_quantile(0.5), "outrank_quantile")
+  expect_equal(as_quantile(0.8)$p, 0.8)
+  expect_error(as_quantile(-0.1), "\\[0, 1\\]")
+  expect_error(as_quantile(2), "\\[0, 1\\]")
+  expect_error(as_quantile(c(0.2, 0.3)), "single")
 })
 
 test_that("similarity-direction ordering is validated", {
@@ -60,7 +60,7 @@ test_that("quantile thresholds are resolved on the off-diagonal distribution", {
   mat[lower.tri(mat)] <- t(mat)[lower.tri(mat)]
 
   crit <- criterion(mat, "dissimilarity",
-                    indifference = q(0.5), similarity = q(0.25), veto = q(0.9))
+                    indifference = as_quantile(0.5), similarity = as_quantile(0.25), veto = as_quantile(0.9))
   resolved <- resolve_thresholds(crit, mat)
 
   expect_equal(resolved$indifference, stats::quantile(c(2, 4, 6), 0.5,
@@ -79,6 +79,6 @@ test_that("quantile resolution enforces ordering after resolution", {
 
   # Similarity direction but indifference quantile lands above similarity.
   crit <- criterion(mat, "similarity",
-                    indifference = q(0.9), similarity = q(0.1))
+                    indifference = as_quantile(0.9), similarity = as_quantile(0.1))
   expect_error(resolve_thresholds(crit, mat), "indifference < similarity")
 })

@@ -23,7 +23,7 @@
 #'
 #' @param weight A single positive weight (normalised later, when the
 #'   similarity matrix is built).
-#' @param indifference,similarity,veto Thresholds, each a number or a [q()]
+#' @param indifference,similarity,veto Thresholds, each a number or a [as_quantile()]
 #'   quantile specification. The defaults differ by direction and are
 #'   documented in the argument defaults.
 #' @param method Edit-distance method passed to
@@ -41,8 +41,8 @@ NULL
 
 #' @rdname crit_process
 #' @export
-crit_activity_profile <- function(weight = 1, indifference = q(0.5),
-                                  similarity = q(0.8), veto = NULL,
+crit_activity_profile <- function(weight = 1, indifference = as_quantile(0.5),
+                                  similarity = as_quantile(0.8), veto = NULL,
                                   name = "activity_profile") {
   criterion(function(traces) measure_activity_profile(traces),
             "similarity", weight, indifference, similarity, veto, name)
@@ -50,8 +50,8 @@ crit_activity_profile <- function(weight = 1, indifference = q(0.5),
 
 #' @rdname crit_process
 #' @export
-crit_transitions <- function(weight = 1, indifference = q(0.5),
-                             similarity = q(0.8), veto = NULL,
+crit_transitions <- function(weight = 1, indifference = as_quantile(0.5),
+                             similarity = as_quantile(0.8), veto = NULL,
                              name = "transitions") {
   criterion(function(traces) measure_transitions(traces),
             "similarity", weight, indifference, similarity, veto, name)
@@ -60,7 +60,7 @@ crit_transitions <- function(weight = 1, indifference = q(0.5),
 #' @rdname crit_process
 #' @export
 crit_edit_distance <- function(weight = 1, method = "osa",
-                               indifference = q(0.5), similarity = q(0.2),
+                               indifference = as_quantile(0.5), similarity = as_quantile(0.2),
                                veto = NULL, name = "edit_distance") {
   criterion(function(traces) measure_edit_distance(traces, method = method),
             "dissimilarity", weight, indifference, similarity, veto, name)
@@ -68,8 +68,8 @@ crit_edit_distance <- function(weight = 1, method = "osa",
 
 #' @rdname crit_process
 #' @export
-crit_trace_length <- function(weight = 1, indifference = q(0.5),
-                              similarity = q(0.2), veto = NULL,
+crit_trace_length <- function(weight = 1, indifference = as_quantile(0.5),
+                              similarity = as_quantile(0.2), veto = NULL,
                               name = "trace_length") {
   criterion(function(traces) measure_trace_length(traces),
             "dissimilarity", weight, indifference, similarity, veto, name)
@@ -77,8 +77,8 @@ crit_trace_length <- function(weight = 1, indifference = q(0.5),
 
 #' @rdname crit_process
 #' @export
-crit_distinct_activities <- function(weight = 1, indifference = q(0.5),
-                                     similarity = q(0.2), veto = NULL,
+crit_distinct_activities <- function(weight = 1, indifference = as_quantile(0.5),
+                                     similarity = as_quantile(0.2), veto = NULL,
                                      name = "distinct_activities") {
   criterion(function(traces) measure_distinct_activities(traces),
             "dissimilarity", weight, indifference, similarity, veto, name)
@@ -86,8 +86,8 @@ crit_distinct_activities <- function(weight = 1, indifference = q(0.5),
 
 #' @rdname crit_process
 #' @export
-crit_duration <- function(weight = 1, units = "mins", indifference = q(0.5),
-                          similarity = q(0.2), veto = NULL,
+crit_duration <- function(weight = 1, units = "mins", indifference = as_quantile(0.5),
+                          similarity = as_quantile(0.2), veto = NULL,
                           name = "duration") {
   criterion(function(traces) measure_duration(traces, units = units),
             "dissimilarity", weight, indifference, similarity, veto, name)

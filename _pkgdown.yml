@@ -13,7 +13,7 @@ reference:
     desc: Build the criteria that define pairwise similarity.
     contents:
       - criterion
-      - q
+      - as_quantile
       - starts_with("crit_")
   - title: Similarity and clustering
     contents:

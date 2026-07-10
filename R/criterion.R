@@ -2,7 +2,7 @@
 
 #' Quantile threshold specification
 #'
-#' `q()` marks a criterion threshold as a quantile of the empirical
+#' `as_quantile()` marks a criterion threshold as a quantile of the empirical
 #' distribution of that criterion's off-diagonal pairwise values, rather than
 #' a fixed number. It is resolved to a numeric value when the criterion's
 #' measure matrix is available (see [criterion()]).
@@ -10,9 +10,9 @@
 #' @param p A single probability in `[0, 1]`.
 #' @return An object of class `outrank_quantile`.
 #' @examples
-#' q(0.8)
+#' as_quantile(0.8)
 #' @export
-q <- function(p) {
+as_quantile <- function(p) {
   if (!is.numeric(p) || length(p) != 1L || is.na(p) || p < 0 || p > 1) {
     stop("`p` must be a single number in [0, 1].", call. = FALSE)
   }
@@ -23,7 +23,7 @@ is_quantile <- function(x) inherits(x, "outrank_quantile")
 
 #' @export
 print.outrank_quantile <- function(x, ...) {
-  cat(sprintf("q(%g)\n", x$p))
+  cat(sprintf("as_quantile(%g)\n", x$p))
   invisible(x)
 }
 
@@ -51,7 +51,7 @@ print.outrank_quantile <- function(x, ...) {
 #' discordance.
 #'
 #' Thresholds may be given as plain numbers or as a quantile specification
-#' [q()]. Numeric thresholds are validated immediately; quantile thresholds
+#' [as_quantile()]. Numeric thresholds are validated immediately; quantile thresholds
 #' are resolved and validated once the measure matrix is known.
 #'
 #' @param measure Either a `function(traces)` returning a symmetric numeric
@@ -62,8 +62,8 @@ print.outrank_quantile <- function(x, ...) {
 #' @param weight A single positive number. Weights are normalised to sum to
 #'   one when the credibility matrix is built.
 #' @param indifference,similarity Required thresholds; each a single number or
-#'   a [q()] quantile specification.
-#' @param veto Optional veto threshold; a number, a [q()] specification, or
+#'   a [as_quantile()] quantile specification.
+#' @param veto Optional veto threshold; a number, a [as_quantile()] specification, or
 #'   `NULL` for no discordance.
 #' @param name Optional label used in printing and diagnostics.
 #' @return An object of class `criterion`.
@@ -129,7 +129,7 @@ criterion <- function(measure,
 check_threshold <- function(z, what) {
   if (is_quantile(z)) return(invisible())
   if (!is.numeric(z) || length(z) != 1L || is.na(z)) {
-    stop(sprintf("`%s` must be a single number or a q() specification.", what),
+    stop(sprintf("`%s` must be a single number or a as_quantile() specification.", what),
          call. = FALSE)
   }
 }
@@ -165,7 +165,7 @@ validate_thresholds <- function(veto, indifference, similarity, direction) {
   invisible(TRUE)
 }
 
-## Resolve any q() thresholds of `crit` against the off-diagonal values of the
+## Resolve any as_quantile() thresholds of `crit` against the off-diagonal values of the
 ## measure matrix `mat`, then validate the resulting ordering. Returns the
 ## criterion with numeric thresholds.
 resolve_thresholds <- function(crit, mat) {
@@ -187,7 +187,7 @@ resolve_thresholds <- function(crit, mat) {
 
 #' @export
 print.criterion <- function(x, ...) {
-  fmt <- function(z) if (is_quantile(z)) sprintf("q(%g)", z$p) else format(z)
+  fmt <- function(z) if (is_quantile(z)) sprintf("as_quantile(%g)", z$p) else format(z)
   label <- if (!is.na(x$name)) sprintf(" '%s'", x$name) else ""
   cat(sprintf("<criterion%s>: direction = %s, weight = %g\n",
               label, x$direction, x$weight))
