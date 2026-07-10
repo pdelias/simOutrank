@@ -48,10 +48,10 @@ criterion with `c_j = 1` is never in `J` (concordance is already
 maximal), which also avoids the division by `1 - c_j`.
 
 Quantile thresholds
-([`q()`](https://pdelias.github.io/simOutrank/reference/q.md)) are
-resolved against the off-diagonal distribution of each criterion's own
-measure matrix before the indices are computed. Weights are normalised
-to sum to one, with a message when they did not already.
+([`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md))
+are resolved against the off-diagonal distribution of each criterion's
+own measure matrix before the indices are computed. Weights are
+normalised to sum to one, with a message when they did not already.
 
 ## Examples
 

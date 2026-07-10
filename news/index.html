@@ -7,7 +7,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">simOutrank</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -36,9 +36,15 @@
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Changelog</h1>
-      <small>Source: <a href="https://github.com/pdelias/simOutrank/blob/v0.2.0/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
+      <small>Source: <a href="https://github.com/pdelias/simOutrank/blob/main/NEWS.md" class="external-link"><code>NEWS.md</code></a></small>
     </div>
 
+    <div class="section level2">
+<h2 class="pkg-version" data-toc-text="0.3.0" id="simoutrank-030">simOutrank 0.3.0<a class="anchor" aria-label="anchor" href="#simoutrank-030"></a></h2>
+<ul><li>
+<strong>Breaking:</strong> the quantile-threshold constructor <code><a href="https://rdrr.io/r/base/quit.html" class="external-link">q()</a></code> is renamed to <code><a href="../reference/as_quantile.html">as_quantile()</a></code> to avoid masking <code><a href="https://rdrr.io/r/base/quit.html" class="external-link">base::q()</a></code> and for consistency with <code><a href="../reference/as_traces.html">as_traces()</a></code>. Replace <code>q(0.8)</code> with <code>as_quantile(0.8)</code>.</li>
+<li>Added the maintainer’s ORCID.</li>
+</ul></div>
     <div class="section level2">
 <h2 class="pkg-version" data-toc-text="0.2.0" id="simoutrank-020">simOutrank 0.2.0<a class="anchor" aria-label="anchor" href="#simoutrank-020"></a></h2>
 <div class="section level3">
@@ -62,7 +68,7 @@
 <h3 id="pipeline-0-1-0">Pipeline<a class="anchor" aria-label="anchor" href="#pipeline-0-1-0"></a></h3>
 <ul><li>
 <code><a href="../reference/as_traces.html">as_traces()</a></code> turns a <code>data.frame</code> event log (or, with , an <code>eventlog</code>/<code>activitylog</code>) into a <code>traces</code> object.</li>
-<li>Criterion helpers build the pairwise measures: process-aware (<code><a href="../reference/crit_process.html">crit_activity_profile()</a></code>, <code><a href="../reference/crit_process.html">crit_transitions()</a></code>, <code><a href="../reference/crit_process.html">crit_edit_distance()</a></code>, <code><a href="../reference/crit_process.html">crit_trace_length()</a></code>, <code><a href="../reference/crit_process.html">crit_distinct_activities()</a></code>, <code><a href="../reference/crit_process.html">crit_duration()</a></code>), attribute templates (<code><a href="../reference/crit_attribute.html">crit_nominal()</a></code>, <code><a href="../reference/crit_attribute.html">crit_ordinal()</a></code>, <code><a href="../reference/crit_attribute.html">crit_numeric()</a></code>) and the <code><a href="../reference/crit_custom.html">crit_custom()</a></code> escape hatch, all built on <code><a href="../reference/criterion.html">criterion()</a></code> with fixed-number or quantile (<code><a href="../reference/q.html">q()</a></code>) thresholds.</li>
+<li>Criterion helpers build the pairwise measures: process-aware (<code><a href="../reference/crit_process.html">crit_activity_profile()</a></code>, <code><a href="../reference/crit_process.html">crit_transitions()</a></code>, <code><a href="../reference/crit_process.html">crit_edit_distance()</a></code>, <code><a href="../reference/crit_process.html">crit_trace_length()</a></code>, <code><a href="../reference/crit_process.html">crit_distinct_activities()</a></code>, <code><a href="../reference/crit_process.html">crit_duration()</a></code>), attribute templates (<code><a href="../reference/crit_attribute.html">crit_nominal()</a></code>, <code><a href="../reference/crit_attribute.html">crit_ordinal()</a></code>, <code><a href="../reference/crit_attribute.html">crit_numeric()</a></code>) and the <code><a href="../reference/crit_custom.html">crit_custom()</a></code> escape hatch, all built on <code><a href="../reference/criterion.html">criterion()</a></code> with fixed-number or quantile (<code><a href="../reference/as_quantile.html">as_quantile()</a></code>) thresholds.</li>
 <li>
 <code><a href="../reference/outrank_similarity.html">outrank_similarity()</a></code> aggregates the criteria into the ELECTRE-III credibility matrix <code>S</code>.</li>
 <li>

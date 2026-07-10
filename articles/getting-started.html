@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">simOutrank</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
       <h1>Getting started with simOutrank</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/v0.2.0/vignettes/getting-started.Rmd" class="external-link"><code>vignettes/getting-started.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/main/vignettes/getting-started.Rmd" class="external-link"><code>vignettes/getting-started.Rmd</code></a></small>
       <div class="d-none name"><code>getting-started.Rmd</code></div>
     </div>
 
@@ -80,11 +80,6 @@ a spectral or hierarchical algorithm then partitions.</p>
 Delias et al. (2023).</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va"><a href="https://github.com/pdelias/simOutrank" class="external-link">simOutrank</a></span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; Attaching package: 'simOutrank'</span></span>
-<span><span class="co">#&gt; The following object is masked from 'package:base':</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt;     q</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/utils/head.html" class="external-link">head</a></span><span class="op">(</span><span class="va">illustrative_log</span><span class="op">)</span></span>
 <span><span class="co">#&gt;   case_id activity           timestamp status satisfaction</span></span>
 <span><span class="co">#&gt; 1       1        B 2021-01-01 00:01:00   GOLD         High</span></span>
@@ -135,7 +130,7 @@ what order, and two case attributes.</p>
 <span><span class="co">#&gt; &lt;criterion 'activity_profile'&gt;: direction = similarity, weight = 0.2</span></span>
 <span><span class="co">#&gt;   indifference = 0.7, similarity = 0.8, veto = 0.4</span></span></code></pre></div>
 <p>Thresholds may be fixed numbers or quantiles of the criterion’s own
-value distribution via <code><a href="../reference/q.html">q()</a></code>; the <a href="parameter-tuning.html">parameter-tuning vignette</a> explores that
+value distribution via <code><a href="../reference/as_quantile.html">as_quantile()</a></code>; the <a href="parameter-tuning.html">parameter-tuning vignette</a> explores that
 choice.</p>
 </div>
 <div class="section level2">

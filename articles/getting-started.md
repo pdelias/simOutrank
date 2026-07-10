@@ -15,11 +15,6 @@ al. (2023).
 ``` r
 
 library(simOutrank)
-#> 
-#> Attaching package: 'simOutrank'
-#> The following object is masked from 'package:base':
-#> 
-#>     q
 head(illustrative_log)
 #>   case_id activity           timestamp status satisfaction
 #> 1       1        B 2021-01-01 00:01:00   GOLD         High
@@ -79,8 +74,8 @@ criteria[[1]]
 
 Thresholds may be fixed numbers or quantiles of the criterion’s own
 value distribution via
-[`q()`](https://pdelias.github.io/simOutrank/reference/q.md); the
-[parameter-tuning
+[`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md);
+the [parameter-tuning
 vignette](https://pdelias.github.io/simOutrank/articles/parameter-tuning.md)
 explores that choice.
 

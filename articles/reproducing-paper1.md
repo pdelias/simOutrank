@@ -71,7 +71,7 @@ criteria <- list(
                similarity = 0, indifference = 1.5, veto = 2.5),
   crit_nominal("type", weight = 3),
   crit_nominal("shift", weight = 16),
-  crit_duration("mins", weight = 12, similarity = q(0.2), indifference = q(0.6))
+  crit_duration("mins", weight = 12, similarity = as_quantile(0.2), indifference = as_quantile(0.6))
 )
 sim <- outrank_similarity(traces, criteria)
 #> Criterion weights normalised to sum to 1 (were 91).

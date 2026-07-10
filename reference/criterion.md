@@ -38,13 +38,13 @@ criterion(
 - indifference, similarity:
 
   Required thresholds; each a single number or a
-  [`q()`](https://pdelias.github.io/simOutrank/reference/q.md) quantile
-  specification.
+  [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
+  quantile specification.
 
 - veto:
 
   Optional veto threshold; a number, a
-  [`q()`](https://pdelias.github.io/simOutrank/reference/q.md)
+  [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
   specification, or `NULL` for no discordance.
 
 - name:
@@ -71,9 +71,9 @@ direction and \\s \< q \< t\\ for the dissimilarity direction. A
 `veto = NULL` criterion contributes no discordance.
 
 Thresholds may be given as plain numbers or as a quantile specification
-[`q()`](https://pdelias.github.io/simOutrank/reference/q.md). Numeric
-thresholds are validated immediately; quantile thresholds are resolved
-and validated once the measure matrix is known.
+[`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md).
+Numeric thresholds are validated immediately; quantile thresholds are
+resolved and validated once the measure matrix is known.
 
 ## Examples
 

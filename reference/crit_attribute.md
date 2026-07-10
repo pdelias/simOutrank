@@ -13,8 +13,8 @@ crit_ordinal(
   attribute,
   levels,
   weight = 1,
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = attribute
 )
@@ -23,8 +23,8 @@ crit_numeric(
   attribute,
   weight = 1,
   transform = identity,
-  indifference = q(0.5),
-  similarity = q(0.2),
+  indifference = as_quantile(0.5),
+  similarity = as_quantile(0.2),
   veto = NULL,
   name = attribute
 )
@@ -52,7 +52,7 @@ crit_numeric(
 - indifference, similarity, veto:
 
   Thresholds; a number or a
-  [`q()`](https://pdelias.github.io/simOutrank/reference/q.md)
+  [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
   specification. Defaults suit the direction and are overridable.
 
 - transform:
@@ -93,8 +93,8 @@ crit_nominal("status", weight = 0.3)
 #>   indifference = 0, similarity = 1, veto = none
 crit_ordinal("triage", levels = c("green", "yellow", "red"), weight = 0.2)
 #> <criterion 'triage'>: direction = dissimilarity, weight = 0.2
-#>   indifference = q(0.5), similarity = q(0.2), veto = none
+#>   indifference = as_quantile(0.5), similarity = as_quantile(0.2), veto = none
 crit_numeric("age", weight = 0.2, transform = identity)
 #> <criterion 'age'>: direction = dissimilarity, weight = 0.2
-#>   indifference = q(0.5), similarity = q(0.2), veto = none
+#>   indifference = as_quantile(0.5), similarity = as_quantile(0.2), veto = none
 ```

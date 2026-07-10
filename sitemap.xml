@@ -11,6 +11,7 @@
 <url><loc>https://pdelias.github.io/simOutrank/authors.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/index.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/news/index.html</loc></url>
+<url><loc>https://pdelias.github.io/simOutrank/reference/as_quantile.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/as_traces.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/augment_log.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/cluster_traces.html</loc></url>
@@ -24,7 +25,6 @@
 <url><loc>https://pdelias.github.io/simOutrank/reference/index.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/outrank_similarity.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/plot.outrank_clust.html</loc></url>
-<url><loc>https://pdelias.github.io/simOutrank/reference/q.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/summary.traces.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/trim_outliers.html</loc></url>
 <url><loc>https://pdelias.github.io/simOutrank/reference/validate_clusters.html</loc></url>

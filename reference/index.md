@@ -18,8 +18,8 @@ Build the criteria that define pairwise similarity.
 
 - [`criterion()`](https://pdelias.github.io/simOutrank/reference/criterion.md)
   : Define an outranking criterion
-- [`q()`](https://pdelias.github.io/simOutrank/reference/q.md) :
-  Quantile threshold specification
+- [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
+  : Quantile threshold specification
 - [`crit_nominal()`](https://pdelias.github.io/simOutrank/reference/crit_attribute.md)
   [`crit_ordinal()`](https://pdelias.github.io/simOutrank/reference/crit_attribute.md)
   [`crit_numeric()`](https://pdelias.github.io/simOutrank/reference/crit_attribute.md)

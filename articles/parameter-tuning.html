@@ -20,7 +20,7 @@
 
     <a class="navbar-brand me-2" href="../index.html">simOutrank</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -62,7 +62,7 @@
       <h1>Parameter tuning and sensitivity</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/v0.2.0/vignettes/parameter-tuning.Rmd" class="external-link"><code>vignettes/parameter-tuning.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/main/vignettes/parameter-tuning.Rmd" class="external-link"><code>vignettes/parameter-tuning.Rmd</code></a></small>
       <div class="d-none name"><code>parameter-tuning.Rmd</code></div>
     </div>
 
@@ -105,15 +105,16 @@ pairs that two partitions agree to keep together or apart):</p>
 <h2 id="fixed-vs-quantile-thresholds">Fixed vs quantile thresholds<a class="anchor" aria-label="anchor" href="#fixed-vs-quantile-thresholds"></a>
 </h2>
 <p>A threshold can be a fixed number or a quantile of the criterion’s
-own value distribution, written <code>q(p)</code>. Quantiles adapt to
-the data, which is useful when you do not have a natural scale.</p>
+own value distribution, written <code>as_quantile(p)</code>. Quantiles
+adapt to the data, which is useful when you do not have a natural
+scale.</p>
 <div class="sourceCode" id="cb3"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="va">crit_fixed</span>    <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crit_process.html">crit_activity_profile</a></span><span class="op">(</span><span class="fl">0.2</span>, indifference <span class="op">=</span> <span class="fl">0.7</span>, similarity <span class="op">=</span> <span class="fl">0.8</span><span class="op">)</span></span>
-<span><span class="va">crit_quantile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crit_process.html">crit_activity_profile</a></span><span class="op">(</span><span class="fl">0.2</span>, indifference <span class="op">=</span> <span class="fu"><a href="../reference/q.html">q</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
-<span>                                       similarity <span class="op">=</span> <span class="fu"><a href="../reference/q.html">q</a></span><span class="op">(</span><span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></span>
+<span><span class="va">crit_quantile</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/crit_process.html">crit_activity_profile</a></span><span class="op">(</span><span class="fl">0.2</span>, indifference <span class="op">=</span> <span class="fu"><a href="../reference/as_quantile.html">as_quantile</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>                                       similarity <span class="op">=</span> <span class="fu"><a href="../reference/as_quantile.html">as_quantile</a></span><span class="op">(</span><span class="fl">0.8</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="va">crit_quantile</span></span>
 <span><span class="co">#&gt; &lt;criterion 'activity_profile'&gt;: direction = similarity, weight = 0.2</span></span>
-<span><span class="co">#&gt;   indifference = q(0.5), similarity = q(0.8), veto = none</span></span></code></pre></div>
+<span><span class="co">#&gt;   indifference = as_quantile(0.5), similarity = as_quantile(0.8), veto = none</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="threshold-sensitivity">Threshold sensitivity<a class="anchor" aria-label="anchor" href="#threshold-sensitivity"></a>

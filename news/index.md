@@ -1,5 +1,16 @@
 # Changelog
 
+## simOutrank 0.3.0
+
+- **Breaking:** the quantile-threshold constructor
+  [`q()`](https://rdrr.io/r/base/quit.html) is renamed to
+  [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
+  to avoid masking [`base::q()`](https://rdrr.io/r/base/quit.html) and
+  for consistency with
+  [`as_traces()`](https://pdelias.github.io/simOutrank/reference/as_traces.md).
+  Replace `q(0.8)` with `as_quantile(0.8)`.
+- Added the maintainer’s ORCID.
+
 ## simOutrank 0.2.0
 
 ### Data
@@ -50,7 +61,7 @@ clustering for process mining.
   escape hatch, all built on
   [`criterion()`](https://pdelias.github.io/simOutrank/reference/criterion.md)
   with fixed-number or quantile
-  ([`q()`](https://pdelias.github.io/simOutrank/reference/q.md))
+  ([`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md))
   thresholds.
 - [`outrank_similarity()`](https://pdelias.github.io/simOutrank/reference/outrank_similarity.md)
   aggregates the criteria into the ELECTRE-III credibility matrix `S`.

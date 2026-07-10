@@ -11,7 +11,7 @@ traces object."></head><body>
 
     <a class="navbar-brand me-2" href="../index.html">simOutrank</a>
 
-    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.2.0</small>
+    <small class="nav-text text-muted me-auto" data-bs-toggle="tooltip" data-bs-placement="bottom" title="">0.3.0</small>
 
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
@@ -40,7 +40,7 @@ traces object."></head><body>
   <main id="main" class="col-md-9"><div class="page-header">
 
       <h1>Attribute-based criterion templates</h1>
-      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/v0.2.0/R/crit_attribute.R" class="external-link"><code>R/crit_attribute.R</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/main/R/crit_attribute.R" class="external-link"><code>R/crit_attribute.R</code></a></small>
       <div class="d-none name"><code>crit_attribute.Rd</code></div>
     </div>
 
@@ -58,8 +58,8 @@ measurement scales. Each builds a measure from a named attribute of the
 <span>  <span class="va">attribute</span>,</span>
 <span>  <span class="va">levels</span>,</span>
 <span>  weight <span class="op">=</span> <span class="fl">1</span>,</span>
-<span>  indifference <span class="op">=</span> <span class="fu"><a href="q.html">q</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
-<span>  similarity <span class="op">=</span> <span class="fu"><a href="q.html">q</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">)</span>,</span>
+<span>  indifference <span class="op">=</span> <span class="fu"><a href="as_quantile.html">as_quantile</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>  similarity <span class="op">=</span> <span class="fu"><a href="as_quantile.html">as_quantile</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">)</span>,</span>
 <span>  veto <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  name <span class="op">=</span> <span class="va">attribute</span></span>
 <span><span class="op">)</span></span>
@@ -68,8 +68,8 @@ measurement scales. Each builds a measure from a named attribute of the
 <span>  <span class="va">attribute</span>,</span>
 <span>  weight <span class="op">=</span> <span class="fl">1</span>,</span>
 <span>  transform <span class="op">=</span> <span class="va">identity</span>,</span>
-<span>  indifference <span class="op">=</span> <span class="fu"><a href="q.html">q</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
-<span>  similarity <span class="op">=</span> <span class="fu"><a href="q.html">q</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">)</span>,</span>
+<span>  indifference <span class="op">=</span> <span class="fu"><a href="as_quantile.html">as_quantile</a></span><span class="op">(</span><span class="fl">0.5</span><span class="op">)</span>,</span>
+<span>  similarity <span class="op">=</span> <span class="fu"><a href="as_quantile.html">as_quantile</a></span><span class="op">(</span><span class="fl">0.2</span><span class="op">)</span>,</span>
 <span>  veto <span class="op">=</span> <span class="cn">NULL</span>,</span>
 <span>  name <span class="op">=</span> <span class="va">attribute</span></span>
 <span><span class="op">)</span></span></code></pre></div>
@@ -97,7 +97,7 @@ highest rank.</p></dd>
 
 
 <dt id="arg-indifference-similarity-veto">indifference, similarity, veto<a class="anchor" aria-label="anchor" href="#arg-indifference-similarity-veto"></a></dt>
-<dd><p>Thresholds; a number or a <code><a href="q.html">q()</a></code>
+<dd><p>Thresholds; a number or a <code><a href="as_quantile.html">as_quantile()</a></code>
 specification. Defaults suit the direction and are overridable.</p></dd>
 
 
@@ -134,10 +134,10 @@ percentage scales.</p></li>
 <span class="r-out co"><span class="r-pr">#&gt;</span>   indifference = 0, similarity = 1, veto = none</span>
 <span class="r-in"><span><span class="fu">crit_ordinal</span><span class="op">(</span><span class="st">"triage"</span>, levels <span class="op">=</span> <span class="fu"><a href="https://rdrr.io/r/base/c.html" class="external-link">c</a></span><span class="op">(</span><span class="st">"green"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span><span class="op">)</span>, weight <span class="op">=</span> <span class="fl">0.2</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;criterion 'triage'&gt;: direction = dissimilarity, weight = 0.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   indifference = q(0.5), similarity = q(0.2), veto = none</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   indifference = as_quantile(0.5), similarity = as_quantile(0.2), veto = none</span>
 <span class="r-in"><span><span class="fu">crit_numeric</span><span class="op">(</span><span class="st">"age"</span>, weight <span class="op">=</span> <span class="fl">0.2</span>, transform <span class="op">=</span> <span class="va">identity</span><span class="op">)</span></span></span>
 <span class="r-out co"><span class="r-pr">#&gt;</span> &lt;criterion 'age'&gt;: direction = dissimilarity, weight = 0.2</span>
-<span class="r-out co"><span class="r-pr">#&gt;</span>   indifference = q(0.5), similarity = q(0.2), veto = none</span>
+<span class="r-out co"><span class="r-pr">#&gt;</span>   indifference = as_quantile(0.5), similarity = as_quantile(0.2), veto = none</span>
 </code></pre></div>
     </div>
   </main><aside class="col-md-3"><nav id="toc" aria-label="Table of contents"><h2>On this page</h2>

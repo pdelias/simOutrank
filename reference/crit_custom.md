@@ -37,7 +37,7 @@ crit_custom(
 - indifference, similarity:
 
   Required thresholds (number or
-  [`q()`](https://pdelias.github.io/simOutrank/reference/q.md)).
+  [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)).
 
 - veto:
 
