@@ -1,6 +1,6 @@
 Package: simOutrank
 Title: Outranking-Based Trace Clustering
-Version: 0.1.0
+Version: 0.2.0
 Authors@R:
     person("Pavlos", "Delias", , "pavlos.delias@gmail.com", role = c("aut", "cre"))
 Description: Implements outranking-based trace clustering for process

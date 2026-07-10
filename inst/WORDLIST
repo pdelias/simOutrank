@@ -1,6 +1,8 @@
 BPIC
 CMD
-DM
+CN
+CNC
+CNCk
 Doumpos
 ELECTRE
 Grigoroudis
@@ -8,8 +10,10 @@ Levenshtein
 Likert
 Matsatsinis
 OSA
+ResearchData
 bupaR
 clValid
+cyclomatic
 doi
 eigengap
 itor

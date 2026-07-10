@@ -1,3 +1,27 @@
+# simOutrank 0.2.0
+
+## Data
+
+* `illustrative_log` now ships the authoritative CSV from Delias et al. (2023)
+  rather than a reconstruction of Table 1. **Breaking:** case ids are now
+  `"1"`--`"25"` (previously `G1`/`B1`...), the lower tier is `"NORMAL"`
+  (previously `"Blue"`), and `satisfaction` is `"High"`/`"Low"` (previously
+  upper case). The credibility matrix `S` is unchanged in value.
+
+## Vignettes
+
+* The reproduction vignettes use the real illustrative log. The large-log
+  article now reproduces the BPIC'11 case study of Delias et al. (2023),
+  including Figures 2 and 3 from bundled aggregate tables.
+
+## Internal
+
+* Added gated (`skip_on_cran`) regression tests on the BPIC'11 similarity
+  matrix. That matrix and the preprocessed BPIC'11 log are kept local-only
+  under the 4TU General Terms of Use and are not redistributed with the
+  package.
+
+
 # simOutrank 0.1.0
 
 First public release. `simOutrank` implements outranking-based trace clustering
