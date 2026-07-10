@@ -7,7 +7,7 @@
 ## Citation
 
 Source:
-[`inst/CITATION`](https://github.com/pdelias/simOutrank/blob/main/inst/CITATION)
+[`inst/CITATION`](https://github.com/pdelias/simOutrank/blob/v0.2.0/inst/CITATION)
 
 Delias P, Doumpos M, Grigoroudis E, Matsatsinis N (2019). “A
 non-compensatory approach for trace clustering.” *International

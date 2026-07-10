@@ -62,7 +62,7 @@
       <h1>Clustering a large event log</h1>
             
       
-      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/main/vignettes/articles/large-log.Rmd" class="external-link"><code>vignettes/articles/large-log.Rmd</code></a></small>
+      <small class="dont-index">Source: <a href="https://github.com/pdelias/simOutrank/blob/v0.2.0/vignettes/articles/large-log.Rmd" class="external-link"><code>vignettes/articles/large-log.Rmd</code></a></small>
       <div class="d-none name"><code>large-log.Rmd</code></div>
     </div>
 
@@ -126,8 +126,8 @@ including its Figures 2 and 3.</p>
 <span><span class="va">t_cl</span>  <span class="op">&lt;-</span> <span class="fu"><a href="https://rdrr.io/r/base/system.time.html" class="external-link">system.time</a></span><span class="op">(</span><span class="va">clust</span> <span class="op">&lt;-</span> <span class="fu"><a href="../reference/cluster_traces.html">cluster_traces</a></span><span class="op">(</span><span class="va">sim</span>, k <span class="op">=</span> <span class="fl">4</span>, seed <span class="op">=</span> <span class="fl">1</span><span class="op">)</span><span class="op">)</span></span>
 <span><span class="fu"><a href="https://rdrr.io/r/base/cbind.html" class="external-link">rbind</a></span><span class="op">(</span>similarity <span class="op">=</span> <span class="va">t_sim</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span>, clustering <span class="op">=</span> <span class="va">t_cl</span><span class="op">[[</span><span class="st">"elapsed"</span><span class="op">]</span><span class="op">]</span><span class="op">)</span></span>
 <span><span class="co">#&gt;             [,1]</span></span>
-<span><span class="co">#&gt; similarity 0.115</span></span>
-<span><span class="co">#&gt; clustering 0.143</span></span></code></pre></div>
+<span><span class="co">#&gt; similarity 0.083</span></span>
+<span><span class="co">#&gt; clustering 0.111</span></span></code></pre></div>
 <p>The measures are fully vectorised (no per-pair <code><a href="https://rdrr.io/r/base/apply.html" class="external-link">apply()</a></code>),
 so 500 cases build <code>S</code> in well under a second on a laptop.
 Memory, not time, is the practical ceiling: <code>S</code> for
