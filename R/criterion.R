@@ -51,8 +51,8 @@ print.outrank_quantile <- function(x, ...) {
 #' discordance.
 #'
 #' Thresholds may be given as plain numbers or as a quantile specification
-#' [as_quantile()]. Numeric thresholds are validated immediately; quantile thresholds
-#' are resolved and validated once the measure matrix is known.
+#' [as_quantile()]. Numeric thresholds are validated immediately; quantile
+#' thresholds are resolved and validated once the measure matrix is known.
 #'
 #' @param measure Either a `function(traces)` returning a symmetric numeric
 #'   matrix, or a precomputed numeric matrix with dimnames matching the case
@@ -63,8 +63,8 @@ print.outrank_quantile <- function(x, ...) {
 #'   one when the credibility matrix is built.
 #' @param indifference,similarity Required thresholds; each a single number or
 #'   a [as_quantile()] quantile specification.
-#' @param veto Optional veto threshold; a number, a [as_quantile()] specification, or
-#'   `NULL` for no discordance.
+#' @param veto Optional veto threshold; a number, an [as_quantile()]
+#'   specification, or `NULL` for no discordance.
 #' @param name Optional label used in printing and diagnostics.
 #' @return An object of class `criterion`.
 #' @examples
@@ -129,8 +129,8 @@ criterion <- function(measure,
 check_threshold <- function(z, what) {
   if (is_quantile(z)) return(invisible())
   if (!is.numeric(z) || length(z) != 1L || is.na(z)) {
-    stop(sprintf("`%s` must be a single number or a as_quantile() specification.", what),
-         call. = FALSE)
+    stop(sprintf("`%s` must be a number or an as_quantile() specification.",
+                 what), call. = FALSE)
   }
 }
 
@@ -165,9 +165,9 @@ validate_thresholds <- function(veto, indifference, similarity, direction) {
   invisible(TRUE)
 }
 
-## Resolve any as_quantile() thresholds of `crit` against the off-diagonal values of the
-## measure matrix `mat`, then validate the resulting ordering. Returns the
-## criterion with numeric thresholds.
+## Resolve any as_quantile() thresholds of `crit` against the off-diagonal
+## values of the measure matrix `mat`, then validate the resulting ordering.
+## Returns the criterion with numeric thresholds.
 resolve_thresholds <- function(crit, mat) {
   vals <- mat[upper.tri(mat)]
   res <- function(z) {
@@ -187,7 +187,9 @@ resolve_thresholds <- function(crit, mat) {
 
 #' @export
 print.criterion <- function(x, ...) {
-  fmt <- function(z) if (is_quantile(z)) sprintf("as_quantile(%g)", z$p) else format(z)
+  fmt <- function(z) {
+    if (is_quantile(z)) sprintf("as_quantile(%g)", z$p) else format(z)
+  }
   label <- if (!is.na(x$name)) sprintf(" '%s'", x$name) else ""
   cat(sprintf("<criterion%s>: direction = %s, weight = %g\n",
               label, x$direction, x$weight))

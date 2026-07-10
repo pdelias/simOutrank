@@ -64,9 +64,9 @@ crit_duration(
 \item{weight}{A single positive weight (normalised later, when the
 similarity matrix is built).}
 
-\item{indifference, similarity, veto}{Thresholds, each a number or a \code{\link[=as_quantile]{as_quantile()}}
-quantile specification. The defaults differ by direction and are
-documented in the argument defaults.}
+\item{indifference, similarity, veto}{Thresholds, each a number or an
+\code{\link[=as_quantile]{as_quantile()}} quantile specification. The defaults differ by direction
+and are documented in the argument defaults.}
 
 \item{name}{Criterion label.}
 

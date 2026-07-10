@@ -53,8 +53,8 @@ baseline <- cluster_traces(outrank_similarity(traces, criteria()),
 ## Fixed vs quantile thresholds
 
 A threshold can be a fixed number or a quantile of the criterion's own value
-distribution, written `as_quantile(p)`. Quantiles adapt to the data, which is useful when
-you do not have a natural scale.
+distribution, written `as_quantile(p)`. Quantiles adapt to the data, which is
+useful when you do not have a natural scale.
 
 ```{r quantile}
 crit_fixed    <- crit_activity_profile(0.2, indifference = 0.7, similarity = 0.8)

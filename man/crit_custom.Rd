@@ -22,7 +22,8 @@ precomputed numeric matrix with case-id dimnames.}
 
 \item{weight}{A single positive weight.}
 
-\item{indifference, similarity}{Required thresholds (number or \code{\link[=as_quantile]{as_quantile()}}).}
+\item{indifference, similarity}{Required thresholds (number or
+\code{\link[=as_quantile]{as_quantile()}}).}
 
 \item{veto}{Optional veto threshold.}
 

@@ -39,8 +39,9 @@ crit_numeric(
 \item{levels}{For \code{crit_ordinal()}, the attribute values from lowest to
 highest rank.}
 
-\item{indifference, similarity, veto}{Thresholds; a number or a \code{\link[=as_quantile]{as_quantile()}}
-specification. Defaults suit the direction and are overridable.}
+\item{indifference, similarity, veto}{Thresholds; a number or an
+\code{\link[=as_quantile]{as_quantile()}} specification. Defaults suit the direction and are
+overridable.}
 
 \item{transform}{For \code{crit_numeric()}, a function applied to the numeric
 attribute before differencing (e.g. \code{log}); defaults to \code{\link[=identity]{identity()}}.}

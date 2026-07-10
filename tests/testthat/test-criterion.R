@@ -60,7 +60,8 @@ test_that("quantile thresholds are resolved on the off-diagonal distribution", {
   mat[lower.tri(mat)] <- t(mat)[lower.tri(mat)]
 
   crit <- criterion(mat, "dissimilarity",
-                    indifference = as_quantile(0.5), similarity = as_quantile(0.25), veto = as_quantile(0.9))
+                    indifference = as_quantile(0.5),
+                    similarity = as_quantile(0.25), veto = as_quantile(0.9))
   resolved <- resolve_thresholds(crit, mat)
 
   expect_equal(resolved$indifference, stats::quantile(c(2, 4, 6), 0.5,
@@ -79,6 +80,7 @@ test_that("quantile resolution enforces ordering after resolution", {
 
   # Similarity direction but indifference quantile lands above similarity.
   crit <- criterion(mat, "similarity",
-                    indifference = as_quantile(0.9), similarity = as_quantile(0.1))
+                    indifference = as_quantile(0.9),
+                    similarity = as_quantile(0.1))
   expect_error(resolve_thresholds(crit, mat), "indifference < similarity")
 })

@@ -28,8 +28,8 @@ one when the credibility matrix is built.}
 \item{indifference, similarity}{Required thresholds; each a single number or
 a \code{\link[=as_quantile]{as_quantile()}} quantile specification.}
 
-\item{veto}{Optional veto threshold; a number, a \code{\link[=as_quantile]{as_quantile()}} specification, or
-\code{NULL} for no discordance.}
+\item{veto}{Optional veto threshold; a number, an \code{\link[=as_quantile]{as_quantile()}}
+specification, or \code{NULL} for no discordance.}
 
 \item{name}{Optional label used in printing and diagnostics.}
 }
@@ -59,8 +59,8 @@ dissimilarity direction. A \code{veto = NULL} criterion contributes no
 discordance.
 
 Thresholds may be given as plain numbers or as a quantile specification
-\code{\link[=as_quantile]{as_quantile()}}. Numeric thresholds are validated immediately; quantile thresholds
-are resolved and validated once the measure matrix is known.
+\code{\link[=as_quantile]{as_quantile()}}. Numeric thresholds are validated immediately; quantile
+thresholds are resolved and validated once the measure matrix is known.
 }
 \examples{
 # A similarity criterion on a precomputed matrix.
