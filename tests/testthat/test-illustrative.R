@@ -23,11 +23,11 @@ test_that("S satisfies its invariants on the illustrative log", {
   expect_equal(s, t(s))
   expect_true(all(s >= 0 & s <= 1))
   # Cases with an identical (trace, status, satisfaction) profile are fully
-  # similar under every criterion.
-  expect_equal(s["G1", "G2"], 1)
-  expect_equal(s["B1", "B5"], 1)
-  expect_equal(s["G9", "G10"], 1)
-  expect_equal(s["B6", "B11"], 1)
+  # similar under every criterion (case ids 1-25 follow Table 1's order).
+  expect_equal(s["1", "2"], 1)      # Gold short path (B, E)
+  expect_equal(s["11", "15"], 1)    # Normal short path (A, C, D, E)
+  expect_equal(s["9", "10"], 1)     # Gold, low satisfaction
+  expect_equal(s["16", "21"], 1)    # Normal long path
 })
 
 test_that("spectral clustering is reproducible and yields four groups", {
@@ -43,8 +43,8 @@ test_that("spectral clustering is reproducible and yields four groups", {
 test_that("cases with identical profiles share a cluster", {
   m <- cluster_traces(illustrative_sim(), k = 4, seed = 42)$memberships
   identical_groups <- list(
-    paste0("G", 1:5), paste0("G", 6:8), paste0("G", 9:10),
-    paste0("B", 1:5), paste0("B", 6:11), paste0("B", 12:13)
+    as.character(1:5), as.character(6:8), as.character(9:10),
+    as.character(11:15), as.character(16:21), as.character(22:23)
   )
   for (g in identical_groups) {
     expect_length(unique(m[g]), 1L)

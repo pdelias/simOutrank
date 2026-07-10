@@ -35,8 +35,8 @@ test_that("crit_nominal scores equality from a case attribute", {
     crit_nominal("status", weight = 1)
   ))
   # Same status -> 1, different status -> 0.
-  expect_equal(sim$S["G1", "G2"], 1)        # both Gold
-  expect_equal(sim$S["G1", "B1"], 0)        # Gold vs Blue
+  expect_equal(sim$S["1", "2"], 1)          # both GOLD
+  expect_equal(sim$S["1", "11"], 0)         # GOLD vs NORMAL
 })
 
 test_that("crit_ordinal ranks by levels", {

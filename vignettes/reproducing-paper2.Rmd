@@ -20,10 +20,11 @@ package as `illustrative_log`.
 
 ## The scenario
 
-A service desk handles two customer tiers, "Gold" and "Blue", each with its own
-process flow, and records each customer's satisfaction. There are 25 fictitious
-customers (Table 1 of the paper); two of them, `B14` and `G11`, are deliberate
-outliers whose flow does not fit either tier.
+A service desk handles two customer tiers, `"GOLD"` and `"NORMAL"` (the paper
+calls the latter "Blue"), each with its own process flow, and records each
+customer's satisfaction. There are 25 fictitious customers (Table 1 of the
+paper), numbered in Table 1's order; the last two (cases `24` and `25`) are
+deliberate outliers whose flow does not fit either tier.
 
 ```{r log}
 traces <- as_traces(illustrative_log, "case_id", "activity", "timestamp")
@@ -60,7 +61,7 @@ Cases that share the same trace, tier and satisfaction are fully similar under
 every criterion, so their credibility is exactly 1:
 
 ```{r identical}
-sim$S[c("G1", "G2", "G3"), c("G1", "G2", "G3")]
+sim$S[c("1", "2", "3"), c("1", "2", "3")]
 ```
 
 ## Run 1: clustering without domain knowledge

@@ -7,11 +7,11 @@
 \format{
 A data frame with 117 rows (events) and 5 columns:
 \describe{
-\item{case_id}{Customer identifier (25 distinct cases).}
+\item{case_id}{Customer identifier, \code{"1"}--\code{"25"} (character).}
 \item{activity}{Activity performed (\code{A}--\code{E}), in chronological order.}
 \item{timestamp}{Event time (\code{POSIXct}); events are one minute apart.}
-\item{status}{Customer tier, \code{"Gold"} or \code{"Blue"}.}
-\item{satisfaction}{Registered satisfaction, \code{"HIGH"} or \code{"LOW"}.}
+\item{status}{Customer tier, \code{"GOLD"} or \code{"NORMAL"}.}
+\item{satisfaction}{Registered satisfaction, \code{"High"} or \code{"Low"}.}
 }
 }
 \source{
@@ -26,8 +26,9 @@ illustrative_log
 \description{
 The synthetic event log of Table 1 in Delias et al. (2023), used to
 illustrate outranking-based trace clustering. It describes 25 fictitious
-customers of a service desk with two tiers ("Gold" and "Blue"); two cases
-(\code{B14}, \code{G11}) are deliberate outliers whose flow does not match the process
-logic.
+customers of a service desk with two tiers, \code{"GOLD"} and \code{"NORMAL"} (the
+latter is the "Blue" tier of the paper's narrative). Cases are numbered in
+Table 1's order; the last two (case ids \code{"24"} and \code{"25"}) are deliberate
+outliers whose flow matches neither tier.
 }
 \keyword{datasets}

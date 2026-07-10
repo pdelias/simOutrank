@@ -1,54 +1,40 @@
-# Builds `illustrative_log` from Table 1 of Delias et al. (2023), "Improving the
-# non-compensatory trace-clustering decision process", Intl. Trans. in Op. Res.,
-# 30(3), 1387-1406. doi:10.1111/itor.13062
+# Builds `illustrative_log` from the authoritative CSV of Delias et al. (2023),
+# "Improving the non-compensatory trace-clustering decision process",
+# Intl. Trans. in Op. Res., 30(3), 1387-1406. doi:10.1111/itor.13062 (Table 1).
 #
-# Run with: source("data-raw/illustrative_log.R")
+# Source file: dev/fixtures/Illustrative_event_Log.csv (UTF-8 BOM, CRLF, clock
+# timestamps). Run with: source("data-raw/illustrative_log.R")
 
-# Trace | Status | Satisfaction | case ids (Table 1).
-profiles <- list(
-  list(trace = c("B", "E"),                     status = "Gold", satisfaction = "HIGH",
-       cases = c("G1", "G2", "G3", "G4", "G5")),
-  list(trace = c("B", "E", "C", "D", "E"),      status = "Gold", satisfaction = "HIGH",
-       cases = c("G6", "G7", "G8")),
-  list(trace = c("B", "E", "C", "D", "E"),      status = "Gold", satisfaction = "LOW",
-       cases = c("G9", "G10")),
-  list(trace = c("A", "C", "D", "E"),           status = "Blue", satisfaction = "HIGH",
-       cases = c("B1", "B2", "B3", "B4", "B5")),
-  list(trace = c("A", "C", "D", "E", "C", "D", "E"), status = "Blue", satisfaction = "HIGH",
-       cases = c("B6", "B7", "B8", "B9", "B10", "B11")),
-  list(trace = c("A", "C", "D", "E", "C", "D", "E"), status = "Blue", satisfaction = "LOW",
-       cases = c("B12", "B13")),
-  list(trace = c("A", "B", "E"),                status = "Blue", satisfaction = "HIGH",
-       cases = "B14"),
-  list(trace = c("C", "B", "E"),                status = "Gold", satisfaction = "HIGH",
-       cases = "G11")
+raw_path <- "dev/fixtures/Illustrative_event_Log.csv"
+
+lines <- readLines(raw_path, warn = FALSE)
+lines <- sub("^﻿", "", lines)          # strip UTF-8 BOM
+lines <- gsub("\r", "", lines)               # normalise CRLF
+
+df <- utils::read.csv(text = lines, stringsAsFactors = FALSE,
+                      colClasses = "character")
+names(df) <- tolower(names(df))
+names(df)[names(df) == "case.id"] <- "case_id"
+
+# Clock timestamps ("H:M:S" elapsed) -> POSIXct on a nominal base date.
+secs <- as.numeric(as.difftime(df$timestamp, format = "%H:%M:%S",
+                               units = "secs"))
+stopifnot(!anyNA(secs))
+
+illustrative_log <- data.frame(
+  case_id      = df$case_id,
+  activity     = df$activity,
+  timestamp    = as.POSIXct("2021-01-01", tz = "UTC") + secs,
+  status       = df$status,
+  satisfaction = df$satisfaction,
+  stringsAsFactors = FALSE
 )
-
-base_time <- as.POSIXct("2021-01-01 00:00:00", tz = "UTC")
-
-rows <- list()
-for (p in profiles) {
-  for (case in p$cases) {
-    n <- length(p$trace)
-    rows[[length(rows) + 1L]] <- data.frame(
-      case_id      = case,
-      activity     = p$trace,
-      timestamp    = base_time + (seq_len(n) - 1L) * 60,
-      status       = p$status,
-      satisfaction = p$satisfaction,
-      stringsAsFactors = FALSE
-    )
-  }
-}
-
-# Order cases as in Table 1 (G-group first appearance, then B-groups, ...).
-illustrative_log <- do.call(rbind, rows)
-rownames(illustrative_log) <- NULL
 
 stopifnot(
   length(unique(illustrative_log$case_id)) == 25L,
-  nrow(illustrative_log) == sum(vapply(profiles,
-    function(p) length(p$trace) * length(p$cases), integer(1)))
+  nrow(illustrative_log) == 117L,
+  setequal(illustrative_log$status, c("GOLD", "NORMAL")),
+  setequal(illustrative_log$satisfaction, c("High", "Low"))
 )
 
 usethis::use_data(illustrative_log, overwrite = TRUE)
