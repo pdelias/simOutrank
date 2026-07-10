@@ -119,8 +119,8 @@ values differ.</p>
 <span><span class="co">#&gt;        tier</span></span>
 <span><span class="co">#&gt; cluster GOLD NORMAL</span></span>
 <span><span class="co">#&gt;       1    0      8</span></span>
-<span><span class="co">#&gt;       2    5      0</span></span>
-<span><span class="co">#&gt;       3    6      0</span></span>
+<span><span class="co">#&gt;       2    6      0</span></span>
+<span><span class="co">#&gt;       3    5      0</span></span>
 <span><span class="co">#&gt;       4    0      6</span></span></code></pre></div>
 <p>The complementary operation, <code><a href="../reference/constraints.html">must_link()</a></code>, rewards pairs
 that should stay together (<code>S &lt;- min(S + reward * M, 1)</code>),
@@ -161,13 +161,13 @@ integer program is also available:</p>
 <span><span class="co">#&gt; [1] "1"  "2"  "3"  "4"  "5"  "6"  "7"  "8"  "25"</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`2`</span></span>
-<span><span class="co">#&gt; [1] "11" "12" "13" "14" "15"</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; $`3`</span></span>
 <span><span class="co">#&gt; [1] "16" "17" "18" "19" "20" "21"</span></span>
 <span><span class="co">#&gt; </span></span>
+<span><span class="co">#&gt; $`3`</span></span>
+<span><span class="co">#&gt; [1] "9"  "10" "22" "23"</span></span>
+<span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; $`4`</span></span>
-<span><span class="co">#&gt; [1] "9"  "10" "22" "23"</span></span></code></pre></div>
+<span><span class="co">#&gt; [1] "11" "12" "13" "14" "15"</span></span></code></pre></div>
 </div>
 <div class="section level2">
 <h2 id="putting-it-together">Putting it together<a class="anchor" aria-label="anchor" href="#putting-it-together"></a>
