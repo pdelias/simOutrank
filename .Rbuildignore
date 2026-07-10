@@ -10,4 +10,6 @@
 ^docs$
 ^pkgdown$
 ^\.github/workflows/pkgdown\.yaml$
+^tests/testthat/fixtures/similarity_ord\.rds$
+^tests/testthat/fixtures/global_Log2_n10_ord\.csv$
 ^.*\.Rproj$

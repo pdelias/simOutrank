@@ -9,3 +9,9 @@ docs
 
 # Copyrighted publisher PDFs — kept locally, not published
 papers/
+
+# BPIC'11-derived data — local-only (4TU General Terms of Use; not redistributed)
+tests/testthat/fixtures/similarity_ord.rds
+tests/testthat/fixtures/global_Log2_n10_ord.csv
+dev/fixtures/similarity_ord.rds
+dev/fixtures/global_Log2_n10_ord.csv
