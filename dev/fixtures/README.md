@@ -1,4 +1,4 @@
-# Datasets for "Improving the non-compensatory trace-clustering decision process" (Delias et al., 2021, ITOR)
+# Datasets for "Improving the non-compensatory trace-clustering decision process" (Delias et al., 2023, ITOR, 30(3), 1387-1406, doi:10.1111/itor.13062)
 
 Traced from `Robustness enhancements/simOutrank enhancments scripts.R` and
 `Robustness enhancements/Non-compensatory_process_scripts.R`. Both scripts
