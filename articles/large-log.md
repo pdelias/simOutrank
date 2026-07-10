@@ -51,7 +51,8 @@ traces
 
 criteria <- list(
   crit_activity_profile(weight = 0.4),
-  crit_edit_distance(weight = 0.3, similarity = as_quantile(0.2), indifference = as_quantile(0.5)),
+  crit_edit_distance(weight = 0.3, similarity = as_quantile(0.2),
+                     indifference = as_quantile(0.5)),
   crit_nominal("urgency", weight = 0.3)
 )
 
@@ -59,7 +60,7 @@ t_sim <- system.time(sim <- outrank_similarity(traces, criteria))
 t_cl  <- system.time(clust <- cluster_traces(sim, k = 4, seed = 1))
 rbind(similarity = t_sim[["elapsed"]], clustering = t_cl[["elapsed"]])
 #>             [,1]
-#> similarity 0.085
+#> similarity 0.087
 #> clustering 0.111
 ```
 

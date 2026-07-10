@@ -70,7 +70,7 @@ crit_duration(
 
 - indifference, similarity, veto:
 
-  Thresholds, each a number or a
+  Thresholds, each a number or an
   [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
   quantile specification. The defaults differ by direction and are
   documented in the argument defaults.

@@ -43,7 +43,7 @@ criterion(
 
 - veto:
 
-  Optional veto threshold; a number, a
+  Optional veto threshold; a number, an
   [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
   specification, or `NULL` for no discordance.
 

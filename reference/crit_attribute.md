@@ -51,7 +51,7 @@ crit_numeric(
 
 - indifference, similarity, veto:
 
-  Thresholds; a number or a
+  Thresholds; a number or an
   [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
   specification. Defaults suit the direction and are overridable.
 
