@@ -1,6 +1,7 @@
 # simOutrank
 
 <!-- badges: start -->
+[![CRAN status](https://www.r-pkg.org/badges/version/simOutrank)](https://CRAN.R-project.org/package=simOutrank)
 [![R-CMD-check](https://github.com/pdelias/simOutrank/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/pdelias/simOutrank/actions/workflows/R-CMD-check.yaml)
 <!-- badges: end -->
 
@@ -16,6 +17,14 @@ spectral or hierarchical clustering, with optional outlier trimming and
 must-link / cannot-link constraints.
 
 ## Installation
+
+Install the released version from CRAN:
+
+```r
+install.packages("simOutrank")
+```
+
+Or the development version from GitHub:
 
 ```r
 # install.packages("remotes")
