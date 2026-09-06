@@ -14,6 +14,15 @@ constraints.
 
 ## Installation
 
+Install the released version from CRAN:
+
+``` r
+
+install.packages("simOutrank")
+```
+
+Or the development version from GitHub:
+
 ``` r
 
 # install.packages("remotes")

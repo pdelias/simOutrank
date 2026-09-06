@@ -2,6 +2,8 @@
 
 ## simOutrank 0.3.0
 
+CRAN release: 2026-07-19
+
 - **Breaking:** the quantile-threshold constructor
   [`q()`](https://rdrr.io/r/base/quit.html) is renamed to
   [`as_quantile()`](https://pdelias.github.io/simOutrank/reference/as_quantile.md)
